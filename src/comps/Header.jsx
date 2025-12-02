@@ -8,7 +8,7 @@ const Header = () => {
       <nav>
         <Link to="/edit">
           <img
-            className="mr-20 border "
+            className="mr-20 border rounded-full "
             width="50"
             height="50"
             src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png"

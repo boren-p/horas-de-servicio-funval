@@ -43,7 +43,7 @@ const HomeAdmin = () => {
                   setOpenMenu(false);
                 }}
               >
-                <Link to="/users">Usuarios</Link>
+                <Link to="users">Usuarios</Link>
               </button>
 
               <button
@@ -75,7 +75,7 @@ const HomeAdmin = () => {
 
         {/* NAV en desktop */}
         <nav className="hidden lg:flex items-center gap-10 text-xl">
-          <Link to="/users">
+          <Link to="users">
             <nav>Usuarios</nav>
           </Link>
           <nav>(Escuelas)</nav>
@@ -101,7 +101,7 @@ const HomeAdmin = () => {
                   setOpen(false);
                 }}
               >
-                <Link to="edith">Editar Perfil</Link>
+                <Link to="edit">Editar Perfil</Link>
               </button>
 
               <button

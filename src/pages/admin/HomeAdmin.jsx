@@ -10,7 +10,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="max-w-full border h-25 flex justify-evenly items-center">
+      <header className="max-w-full border h-25 flex justify-evenly items-center bg-[#ffffff]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -37,23 +37,27 @@ const HomeAdmin = () => {
           {/* Menú desplegable móvil*/}
           {openMenu && (
             <div className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg z-20">
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
-                <Link to="/admin">Usuarios</Link>
-              </button>
+              <Link to="/admin">
+                <button
+                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Usuarios
+                </button>
+              </Link>
 
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
-                <Link to="services">Servicio</Link>
-              </button>
+              <Link to="services">
+                <button
+                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Servicio
+                </button>
+              </Link>
 
               <button
                 className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
@@ -113,7 +117,7 @@ const HomeAdmin = () => {
                   setOpen(false);
                 }}
               >
-                <Link to="edith">Editar Perfil</Link>
+                <Link to="edit">Editar Perfil</Link>
               </button>
 
               <button
@@ -130,7 +134,7 @@ const HomeAdmin = () => {
       </header>
 
       {/* CONTENIDO */}
-      <main className="grow w-full px-4 py-5">
+      <main className="grow w-full px-4 py-5 bg-[#f2f3f7] ">
         <Outlet />
       </main>
 

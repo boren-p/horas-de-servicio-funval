@@ -1,12 +1,68 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const HomeAdmin = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [open, setOpen] = useState(false);
   const menu = useRef(null);
   const hamburguesa = useRef(null);
+  const [datos, setDatos] = useState({})
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function traerDatos() {
+      try {
+        const perfil = await fetch(
+          "https://www.hs-service.api.crealape.com/api/v1/auth/profile",
+          {
+            method: "GET",
+            credentials: "include", // Necesario para enviar cookie
+          }
+        );
+        const user = await perfil.json();
+
+        setDatos(user)
+        setEmail(user.email)
+        setPassword(localStorage.getItem("password"))
+
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
+    traerDatos();
+  }, []);
+
+  async function cerrarSesion() {
+    try {
+      const logout = await fetch(
+        "https://www.hs-service.api.crealape.com/api/v1/auth/logout",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+      if (logout) {
+        localStorage.clear();
+        navigate("/")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -18,19 +74,16 @@ const HomeAdmin = () => {
             className="flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded"
           >
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                openMenu ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "rotate-45 translate-y-2" : ""
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                openMenu ? "opacity-0" : ""
-              }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "opacity-0" : ""
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-                openMenu ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "-rotate-45 -translate-y-2" : ""
+                }`}
             ></span>
           </button>
 
@@ -106,9 +159,7 @@ const HomeAdmin = () => {
 
               <button
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors border-t"
-                onClick={() => {
-                  setOpen(false);
-                }}
+                onClick={cerrarSesion}
               >
                 Cerrar Sesión
               </button>
@@ -119,7 +170,7 @@ const HomeAdmin = () => {
 
       {/* CONTENIDO */}
       <main className="grow w-full px-4 py-5">
-        <Outlet />
+        <Outlet context={{ nombre: datos.full_name }} />
       </main>
 
       <footer className="w-full mt-auto h-20 border flex items-center">

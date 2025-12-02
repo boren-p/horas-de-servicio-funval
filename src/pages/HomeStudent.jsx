@@ -5,10 +5,36 @@ import MyServices from "../comps/student/MyServices";
 import ReportService from "../comps/student/ReportService";
 import { useLocation } from "react-router-dom";
 import EditProfile from "../comps/EditProfile";
+import { useEffect, useState } from "react";
 
 const HomeStudent = () => {
   const location = useLocation();
   const editar = location.pathname === "/edit";
+
+  const [datos, setDatos] = useState({})
+
+
+  useEffect(() => {
+    async function traerDatos() {
+      try {
+        const perfil = await fetch(
+          "https://www.hs-service.api.crealape.com/api/v1/auth/profile",
+          {
+            method: "GET",
+            credentials: "include", // Necesario para enviar cookie
+          }
+        );
+        const user = await perfil.json();
+        setDatos(user)
+
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
+    traerDatos();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -20,7 +46,7 @@ const HomeStudent = () => {
           <EditProfile />
         ) : (
           <div>
-            Home del estudiante
+            <h1>Bienvenido: {datos.full_name}</h1>
             <ReportService />
             <MyServices />
           </div>

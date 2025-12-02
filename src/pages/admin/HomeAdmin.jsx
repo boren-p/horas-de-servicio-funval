@@ -36,10 +36,10 @@ const HomeAdmin = () => {
 
           {/* Menú desplegable móvil*/}
           {openMenu && (
-            <div className="absolute text-black left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg z-20">
+            <div className="absolute text-black left-0 mt-2 w-56 bg-white  rounded-lg shadow-lg z-20">
               <Link to="/admin">
                 <button
-                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
+                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
                   onClick={() => {
                     setOpenMenu(false);
                   }}
@@ -49,7 +49,7 @@ const HomeAdmin = () => {
               </Link>
 
               <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
+                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
                 onClick={() => {
                   setOpenMenu(false);
                 }}

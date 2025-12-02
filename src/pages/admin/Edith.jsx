@@ -28,7 +28,7 @@ const Edith = () => {
             <label className="w-48">NOMBRE</label>
             <input
               type="text"
-              placeholder="input || nombre"
+              placeholder="Nombre"
               className="grow border border-gray-400 px-4 py-2"
             />
           </div>
@@ -37,7 +37,7 @@ const Edith = () => {
             <label className="w-48">PAIS</label>
             <input
               type="text"
-              placeholder="input || pais"
+              placeholder="Pais"
               className="grow border border-gray-400 px-4 py-2"
             />
           </div>
@@ -46,7 +46,7 @@ const Edith = () => {
             <label className="w-48">NUMERO DE TELEFONO</label>
             <input
               type="text"
-              placeholder="input || numero de telefono"
+              placeholder=" numero de telefono"
               className="grow border border-gray-400 px-4 py-2"
             />
           </div>
@@ -55,7 +55,7 @@ const Edith = () => {
             <label className="w-48">E-MAIL</label>
             <input
               type="email"
-              placeholder="input || correo"
+              placeholder="Correo"
               className="grow border border-gray-400 px-4 py-2"
             />
           </div>

@@ -4,8 +4,9 @@ import Services from "../../comps/admin/Services";
 
 const Home2 = () => {
   return (
-    <div className=" rounded-2xl p-2">
+    <div className=" rounded-2xl p-2 flex flex-col gap-8">
       <CreateUser />
+
       <Services />
     </div>
   );

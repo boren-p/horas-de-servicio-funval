@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function NuevoUsuarioCard() {
   return (
     <div className="min-h-screen p-4  flex items-center justify-center">
-      <div className="w-full max-w-4xl md: rounded-2xl shadow-2xl  overflow-hidden ">
+      <div className="w-full max-w-4xl md:rounded-2xl shadow-xl overflow-hidden ">
         {/* Header con gradiente llamativo */}
         <div className="bg-[#1F4E79] px-8 py-6 text-center">
           <h2 className="text-white text-xl md:text-3xl font-bold tracking-wide uppercase">

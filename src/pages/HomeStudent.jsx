@@ -9,7 +9,10 @@ const HomeStudent = () => {
     return (
         <div className='flex flex-col gap-5'>
             <Header/>
-            home del estudiante
+            <div className='flex flex-row-reverse w-full'>
+            <h1 className='font-semibold text-4xl'>Bienvenido $estudiante</h1>
+            </div>
+            <h1 className='font-semibold text-4xl'>Te faltan $numero horas de servicio</h1>
             <ReportService/>
             <MyServices/>
             <Footer/>

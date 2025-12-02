@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../../comps/Header";
-import Footer from "../../comps/Footer";
-import UsersList from "../../comps/admins/UsersList";
+import UsersList from "../../comps/admin/UsersList";
 
 const Users = () => {
   return (
-    <div className="flex flex-col gap-5">
-      listas de usuarios
+    <div className="bg-white rounded-2xl">
+      <div className="flex flex-col gap-5 border justify-center items-center text-2xl ">
+        Estudiantes
+      </div>
       <UsersList />
     </div>
   );

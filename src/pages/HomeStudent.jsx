@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
 import MyServices from "../comps/student/MyServices";
@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import EditProfile from "../comps/EditProfile";
 
 const HomeStudent = () => {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const editar = location.pathname === "/edit";
 

@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className=" h-25 border flex justify-between items-center">
-      <img src="/logo 2023.png" alt="Funval internacional" className="h-20" />
+    <header className="bg-[#173B63]  h-25 border flex justify-between items-center">
+      <img
+        src="/logo 2023.png"
+        alt="Funval internacional"
+        className="h-20 bg-[#375d88]"
+      />
       <nav>
         <Link to="/edit">
           <img
-            className="mr-20 border "
+            className="mr-20 border rounded-full "
             width="50"
             height="50"
             src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png"

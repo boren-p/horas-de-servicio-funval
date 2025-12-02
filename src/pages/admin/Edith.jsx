@@ -2,7 +2,7 @@ import React from "react";
 
 const Edith = () => {
   return (
-    <div className="w-full max-w-4xl mx-auto p-8">
+    <div className="w-full max-w-4xl mx-auto p-8  bg-white rounded-2xl">
       {/* Header con título y botón */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl">MI PERFIL</h1>
@@ -15,7 +15,7 @@ const Edith = () => {
       <div className="flex gap-8 mb-8">
         <div className="">
           <img
-            className="mr-20 border "
+            className="mr-20  "
             width="120"
             height="120"
             src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 /* import { useNavigate } from "react-router-dom"; */
 
 export default function Login() {
@@ -6,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   /*  const navigate = useNavigate(); */
 
@@ -26,12 +28,13 @@ export default function Login() {
 
     try {
       const respuesta = await fetch(
-        "https://api-funval-g6.onrender.com/auth/login",
+        "https://www.hs-service.api.crealape.com/api/v1/auth/login",
         {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             email,
             password,
@@ -40,25 +43,39 @@ export default function Login() {
       );
 
       const data = await respuesta.json();
+      localStorage.setItem("password", password)
 
       if (!respuesta.ok) {
         setError(data.message || "Error al iniciar sesión");
         setLoading(false);
         return;
       }
+      console.log(data)
 
-      localStorage.setItem("token", data.access_token);
-      /*   navigate("/home"); */
-    } catch (erro) {
-      setError("Error de conexión con el servidor");
+      const perfil = await fetch(
+        "https://www.hs-service.api.crealape.com/api/v1/auth/profile",
+        {
+          method: "GET",
+          credentials: "include", // Necesario para enviar cookie
+        }
+      );
 
-      const data = await respuesta.json();
-      if (!respuesta.ok) {
-        throw new Error(data.message || "credenciales incorrectas");
+      const user = await perfil.json();
+      console.log("Perfil:", user);
+
+      if (user.role.id === 1) {
+        navigate("/admin")
+      } else if (user.role.id === 4) {
+        navigate("/student")
+      } else {
+        navigate("/")
       }
-      localStorage.setItem("token", data.access_token);
-      /*    navigate("/home"); */
-      console.log(data);
+
+    } catch (error) {
+      setError("Error de conexión con el servidor", error.message);
+      console.log(error)
+      navigate("/");
+
     } finally {
       setLoading(false);
     }

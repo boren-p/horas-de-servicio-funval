@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditProfile = () => {
+const Edith = () => {
   return (
     <div className="w-full max-w-4xl mx-auto p-8">
       {/* Header con título y botón */}
@@ -109,4 +109,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default Edith;

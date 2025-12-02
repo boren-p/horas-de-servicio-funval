@@ -3,8 +3,7 @@ import UsersList from "../../comps/admin/UsersList";
 
 const Users = () => {
   return (
-    <div className="flex flex-col gap-5">
-      listas de usuarios
+    <div className="bg-white rounded-2xl">
       <UsersList />
     </div>
   );

@@ -66,7 +66,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="max-w-full border h-25 flex justify-evenly items-center">
+      <header className="text-white max-w-full h-25 flex justify-evenly items-center bg-[#1F4E79]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -89,25 +89,26 @@ const HomeAdmin = () => {
 
           {/* Menú desplegable móvil*/}
           {openMenu && (
-            <div className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg z-20">
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
-                <Link to="users">Usuarios</Link>
-              </button>
+            <div className="absolute text-black left-0 mt-2 w-56 bg-white  rounded-lg shadow-lg z-20">
+              <Link to="/admin">
+                <button
+                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Usuarios
+                </button>
+              </Link>
 
               <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
+                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
                 onClick={() => {
                   setOpenMenu(false);
                 }}
               >
                 Escuelas
               </button>
-
               <button
                 className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors"
                 onClick={() => {
@@ -119,12 +120,13 @@ const HomeAdmin = () => {
             </div>
           )}
         </div>
-
-        <img
-          src="/logo 2023.png"
-          alt="Funval internacional"
-          className="h-20 border w-60"
-        />
+        <Link to="/admin">
+          <img
+            src="/blanco.png"
+            alt="Funval internacional"
+            className="h-20  w-60"
+          />
+        </Link>
 
         {/* NAV en desktop */}
         <nav className="hidden lg:flex items-center gap-10 text-xl">
@@ -138,16 +140,16 @@ const HomeAdmin = () => {
         {/* Menú del usuario */}
         <nav className="relative" ref={menu}>
           <img
-            className="border cursor-pointer"
+            className=" cursor-pointer"
             width="50"
             height="50"
-            src="https://img.icons8.com/pastel-glyph/64/user-male-circle.png"
+            src="https://img.icons8.com/pastel-glyph/64/FFFFFF/user-male-circle.png"
             alt="user-male-circle"
             onClick={() => setOpen(!open)}
           />
 
           {open && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
+            <div className="absolute text-black right-0 mt-2 w-48 bg-white  rounded-lg shadow-lg z-10">
               <button
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
                 onClick={() => {
@@ -173,7 +175,7 @@ const HomeAdmin = () => {
         <Outlet context={{ nombre: datos.full_name }} />
       </main>
 
-      <footer className="w-full mt-auto h-20 border flex items-center">
+      <footer className="bg-[#173B63] w-full mt-auto h-20 border flex items-center">
         footer
       </footer>
     </div>

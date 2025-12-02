@@ -3,18 +3,21 @@ import { useState } from 'react';
 import ReviewService from './ReviewService';
 
 const Services = () => {
+const [modal, setModal] = useState(false);
 
-    const [openModal, setOpenModal] = useState(false);
-    function abrirModal() {
-        setOpenModal(true);
-    }
-    function cerrarModal() {
-        setOpenModal(false);
-    }
+  function abrirModal() {
+    setModal(true);
+  }
+
+  function cerrarModal() {
+    setModal(false);
+  }
+    
 
     return (
         <div>
-            <div className='border w-full flex flex-col items-center justify-center p-2'>
+            <div className='relative border w-full flex flex-col items-center justify-center p-2'>
+                {modal && <ReviewService closeModal={cerrarModal} />}
                 SERVICIOS NO REVISADOS
                 <div className='flex flex-row-reverse w-full'>
                     <button>ver todos</button>
@@ -40,7 +43,6 @@ const Services = () => {
                     </tbody>
                 </table>
             </div>
-            {openModal && <ReviewService cerrar={cerrarModal}></ReviewService>}
         </div>
 
     );

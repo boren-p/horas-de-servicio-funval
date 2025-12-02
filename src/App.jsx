@@ -1,10 +1,11 @@
 import React from "react";
 import Login from "./pages/Login";
 import HomeAdmin from "./pages/admin/HomeAdmin";
+import Home2 from "./pages/admin/Home2";
 import Users from "./pages/admin/Users";
 import HomeStudent from "./pages/HomeStudent";
 import { Routes, Route } from "react-router-dom";
-import Services from "./comps/admins/Services";
+import Services from "./comps/admin/Services";
 import Edith from "./pages/admin/Edith";
 
 export default function App() {
@@ -12,8 +13,8 @@ export default function App() {
     <Routes>
       {/* Ruta de admin */}
       <Route path="/admin" element={<HomeAdmin />}>
-        <Route index element={<Users />} />
-        <Route path="services" element={<Services />} />
+        <Route index element={<Home2 />} />
+        <Route path="users" element={<Users />} />
         <Route path="edit" element={<Edith />} />
       </Route>
 

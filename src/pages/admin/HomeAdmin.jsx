@@ -52,15 +52,6 @@ const HomeAdmin = () => {
                   setOpenMenu(false);
                 }}
               >
-                <Link to="services">Servicio</Link>
-              </button>
-
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors border-b"
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
                 Escuelas
               </button>
 
@@ -87,9 +78,6 @@ const HomeAdmin = () => {
           <Link to="/admin">
             <nav>Usuarios</nav>
           </Link>
-          <nav className="border">
-            <Link to="services">Servicio</Link>
-          </nav>
           <nav>(Escuelas)</nav>
           <nav>(Categorias)</nav>
         </nav>

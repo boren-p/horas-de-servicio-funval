@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReportService = () => {
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
+        <div className="p-6 bg-gray-100 min-w-screen">
             <form
                 className="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4"
             >

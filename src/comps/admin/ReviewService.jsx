@@ -1,24 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 
-const ReviewService = () => {
-    const [openModal, setOpenModal] = useState(false);
-    function abrirModal() {
-        setOpenModal(true);
-    }
-    function cerrarModal() {
-        setOpenModal(false);
-    }
+const ReviewService = ({ closeModal }) => {
     return (
-        <div>
-            <button
-                onClick={abrirModal}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-            >
-                Revisar
-            </button>
-            {openModal && (
-                <div className="fixed inset-0 bg-black/50 flex justify-center items-center p-4">
+    <div className="fixed inset-0 z-20 bg-black/50 flex justify-center items-center p-4">
                     <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl p-6">
                         <h2 className="text-xl font-bold mb-2">Revisión del Servicio</h2>
                         <div className='flex gap-3'>
@@ -45,7 +30,7 @@ const ReviewService = () => {
 
                         <div className="flex justify-end gap-3 mt-4">
                             <button
-                                onClick={cerrarModal}
+                                onClick={closeModal}
                                 className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
                             >
                                 Cerrar
@@ -59,10 +44,6 @@ const ReviewService = () => {
                         </div>
                     </div>
                 </div>
-            )}
-
-        </div>
-
     );
 }
 

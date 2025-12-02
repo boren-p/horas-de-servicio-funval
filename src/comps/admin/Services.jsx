@@ -3,17 +3,20 @@ import { useState } from "react";
 import ReviewService from "./ReviewService";
 
 const Services = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [modal, setModal] = useState(false);
+
   function abrirModal() {
-    setOpenModal(true);
+    setModal(true);
   }
+
   function cerrarModal() {
-    setOpenModal(false);
+    setModal(false);
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-2xl overflow-hidden ">
+    <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden ">
       {/* Header de la card */}
+      {modal && <ReviewService closeModal={cerrarModal} />}
       <div className=" border-b border-gray-200 px-6 py-4 flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-800">
           SERVICIOS NO REVISADOS
@@ -64,7 +67,6 @@ const Services = () => {
       </div>
 
       <div className="bg-gray-50 px-6 py-4 border-t border-gray-200"></div>
-      {openModal && <ReviewService cerrar={cerrarModal}></ReviewService>}
     </div>
   );
 };

@@ -120,7 +120,7 @@ const HomeAdmin = () => {
       </header>
 
       {/* CONTENIDO */}
-      <main className="grow w-full px-4 py-5 bg-[#f2f3f7] ">
+      <main className="grow w-full px-20 py-5 bg-[#f2f3f7] ">
         <Outlet />
       </main>
 

@@ -7,7 +7,6 @@ const Users = () => {
     return (
         <div className='flex flex-col gap-5'>
             <Header/>
-            listas de usuarios
             <UsersList/>
             <Footer/>
         </div>

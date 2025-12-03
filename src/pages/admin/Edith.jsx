@@ -6,7 +6,6 @@ const Edith = () => {
   return (
     <div className=" bg-white p-10 rounded-2xl  ">
       <div className="  max-w-3xl mx-auto flex flex-col items-center  justify-center">
-        {/* Header */}
         <div className=" w-full flex justify-between items-center mb-12 pb-6 border-b-2 border-gray-900 pt-5">
           <h2 className="text-3xl font-bold text-gray-900">MI PERFIL</h2>
           <button
@@ -17,10 +16,7 @@ const Edith = () => {
           </button>
         </div>
 
-        {/* Avatar y Campos principales */}
         <div className="  w-full  flex gap-12 mb-12">
-          {/* Avatar */}
-
           {!edit ? (
             <div className="flex flex-row flex-1 space-y-8">
               <div className=" w-70 h-30 flex items-center justify-center">
@@ -31,7 +27,7 @@ const Edith = () => {
                   alt="user-male-circle"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-4">
                 <div className="  pb-2">
                   <label className=" font-bold text-gray-500 uppercase mb-1">
                     Nombre
@@ -76,7 +72,7 @@ const Edith = () => {
                     alt="user-male-circle"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-4">
                   <div className="  pb-2">
                     <label className=" font-bold text-gray-500 uppercase mb-1">
                       Nombre

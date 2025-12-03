@@ -10,7 +10,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="text-white max-w-full h-25 flex justify-evenly items-center bg-[#1F4E79]">
+      <header className="text-white max-w-full h-25 flex justify-between items-center bg-[#1F4E79]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -76,7 +76,7 @@ const HomeAdmin = () => {
         </Link>
 
         {/* NAV en desktop */}
-        <nav className="hidden lg:flex items-center gap-10 text-xl">
+        <nav className="hidden lg:flex items-center justify-between  w-150 gap-10 text-2xl">
           <Link to="users">
             <nav>Usuarios</nav>
           </Link>
@@ -85,7 +85,7 @@ const HomeAdmin = () => {
         </nav>
 
         {/* Menú del usuario */}
-        <nav className="relative" ref={menu}>
+        <nav className="relative pr-10" ref={menu}>
           <img
             className=" cursor-pointer"
             width="50"

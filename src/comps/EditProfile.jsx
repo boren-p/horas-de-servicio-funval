@@ -31,7 +31,7 @@ const EditProfile = () => {
                   alt="user-male-circle"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-4">
                 <div className="  pb-2">
                   <label className=" font-bold text-gray-500 uppercase mb-1">
                     Nombre
@@ -76,7 +76,7 @@ const EditProfile = () => {
                     alt="user-male-circle"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-4">
                   <div className="  pb-2">
                     <label className=" font-bold text-gray-500 uppercase mb-1">
                       Nombre

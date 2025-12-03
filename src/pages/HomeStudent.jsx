@@ -27,7 +27,7 @@ const HomeStudent = () => {
           </div>
         )}
       </main>
-      <div className="w-full mt-auto h-20 border flex items-center justify-center bg-[#173B63]">
+      <div className="w-full mt-auto h-20 border flex items-center justify-center bg-[#173B63] ">
         <Footer />
       </div>
     </div>

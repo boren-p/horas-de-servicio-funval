@@ -107,13 +107,13 @@ export default function NuevoUsuarioCard() {
                   htmlFor="password"
                   className="text-xs font-bold text-gray-700 uppercase tracking-wider"
                 >
-                  Contraseña
+                  Numero de Telefono
                 </label>
                 <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="••••••••"
+                  type="number"
+                  id="number"
+                  name="number"
+                  placeholder="+21 235320320"
                   className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
                 />
               </div>
@@ -122,20 +122,19 @@ export default function NuevoUsuarioCard() {
             {/* Escuela */}
             <div className="flex flex-col space-y-2">
               <label
-                htmlFor="escuela"
+                htmlFor="password"
                 className="text-xs font-bold text-gray-700 uppercase tracking-wider"
               >
-                Escuela
+                Contraseña
               </label>
-              <select
-                id="escuela"
-                name="escuela"
+              <input
+                type="number"
+                id="password"
+                name="password"
+                placeholder="Contraseña"
                 className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer"
               >
-                <option value="escuela1">escuela 1</option>
-                <option value="escuela2">escuela 2</option>
-                <option value="escuela3">escuela 3</option>
-              </select>
+              </input>
             </div>
 
             {/* País Controlador y Rol Reclutador */}
@@ -143,16 +142,16 @@ export default function NuevoUsuarioCard() {
               <div className="flex flex-col space-y-5 ">
                 <div className="flex flex-col">
                 <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  País
+                  Escuela
                 </label>
                   <select
-                    id="pais"
-                    name="pais"
+                    id="Escuela"
+                    name="Escuela"
                     className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
                   >
-                    <option value="pais1">País 1</option>
-                    <option value="pais2">País 2</option>
-                    <option value="pais3">País 3</option>
+                    <option value="escuela1">escuela 1</option>
+                    <option value="escuela2">escuela 2</option>
+                    <option value="escuela3">escuela 3</option>
                   </select>
                   </div>
                   <div className="flex flex-col pb">

@@ -124,7 +124,7 @@ const HomeAdmin = () => {
           <img
             src="/blanco.png"
             alt="Funval internacional"
-            className="h-20  w-60"
+            className="h-20  w-auto"
           />
         </Link>
 

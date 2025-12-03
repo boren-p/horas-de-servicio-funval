@@ -83,7 +83,7 @@ export default function Login() {
 
   return (
     <div className="h-screen w-full bg-cover bg-center flex items-center justify-center relative bg-[url(/geminis.png)]">
-      <div className="absolute inset-0 bg-[url(/fondo.png)]"></div>
+      <div className="absolute inset-0 bg-[url(/fondo.png)] bg-cover bg-no-repeat"></div>
 
       <div className="relative  z-10 bg-slate-200 bg-opacity-90 p-8 rounded-xl shadow-lg w-80 md:text-3xl md:p-10 md:w-100">
         <h2 className="text-2xl font-semibold mb-6 text-center ">

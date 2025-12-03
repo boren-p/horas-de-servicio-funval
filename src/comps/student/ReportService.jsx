@@ -98,6 +98,7 @@ const ReportService = () => {
                             <option value={1}>Templo e Historia familiar, Indexacion</option>
                             <option value={2}>Liderazgo</option>
                             <option value={3}>Asistencia al templo</option>
+                            <option value={4}>Otro</option>
                         </select>
                     </div>
 

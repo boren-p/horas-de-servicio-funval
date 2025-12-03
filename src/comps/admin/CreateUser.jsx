@@ -1,6 +1,95 @@
 import React, { useState } from "react";
+import { useReducer } from 'react';
+
+const initialState = {
+  nombre1: "",
+  nombre2: "",
+  apellido1: "",
+  apellido2: "",
+  email: "",
+  password: "",
+  escuela: [],
+  phone: 0,
+  rol: 0,
+  controller: 0,
+  reclutier: 0,
+  loading: false,
+  error: null,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "SET_NOMBRE1":
+      return { ...state, nonmbre1: action.payload };
+    case "SET_NOMBRE2":
+      return { ...state, nonmbre2: action.payload };
+    case "SET_APELLIDO1":
+      return { ...state, apellido1: action.payload };
+    case "SET_APELLIDO2":
+      return { ...state, apellido2: action.payload };
+    case "SET_EMAIL":
+      return { ...state, email: action.payload };
+    case "SET_PASSWORD":
+      return { ...state, password: action.payload };
+    case "SET_ESCUELA":
+      return { ...state, escuela: action.payload };
+    case "SET_PHONE":
+      return { ...state, phone: Number(action.payload) };
+    case "SET_ROL":
+      return { ...state, rol: Number(action.payload) };
+    case "SET_CONTROLLER":
+      return { ...state, controller: Number(action.payload) };
+    case "SET_RECLUTIER":
+      return { ...state, reclutier: Number(action.payload) };
+
+    case "RESET":
+      return initialState;
+
+    default:
+      return state;
+  }
+}
 
 export default function NuevoUsuarioCard() {
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("f_name", state.nombre1);
+    formData.append("s_name", state.nombre2);
+    formData.append("f_lastname", state.apellido1);
+    formData.append("s_lastname", state.apellido2);
+    formData.append("email", state.email);
+    formData.append("password", state.password);
+    formData.append("schools", state.escuela);
+    formData.append("phone", state.phone);
+    formData.append("role_id", state.rol);
+    formData.append("controller_id", state.controller);
+    formData.append("recruiter_id", state.reclutier);
+
+    try {
+      const respuesta = await fetch(
+        "https://www.hs-service.api.crealape.com/api/v1/users/",
+        {
+          method: "POST",
+          credentials: "include",
+          body: formData,
+        }
+      );
+
+      console.log("Respuesta del servidor", await respuesta.json());
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    dispatch({ type: "RESET" });
+  };
+
+
   return (
     <div className="min-h-screen p-4  flex items-center justify-center">
       <div className="w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden ">
@@ -142,9 +231,9 @@ export default function NuevoUsuarioCard() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col space-y-5 ">
                 <div className="flex flex-col">
-                <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  País
-                </label>
+                  <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    País
+                  </label>
                   <select
                     id="pais"
                     name="pais"
@@ -154,11 +243,11 @@ export default function NuevoUsuarioCard() {
                     <option value="pais2">País 2</option>
                     <option value="pais3">País 3</option>
                   </select>
-                  </div>
-                  <div className="flex flex-col pb">
+                </div>
+                <div className="flex flex-col pb">
                   <label className=" pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Controller
-                </label>
+                    Controller
+                  </label>
                   <select
                     id="controlador"
                     name="controlador"
@@ -168,39 +257,39 @@ export default function NuevoUsuarioCard() {
                     <option value="controlador2">Controlador 2</option>
                     <option value="controlador3">Controlador 3</option>
                   </select>
-                  </div>
-                
+                </div>
+
               </div>
 
               <div className="flex flex-col space-y-2">
                 <div className="flex flex-col pb">
                   <div className="flex flex-col pb-5">
-                <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Rol
-                </label>
-                  <select
-                    id="rol"
-                    name="rol"
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
-                  >
-                    <option value="rol1">Rol 1</option>
-                    <option value="rol2">Rol 2</option>
-                    <option value="rol3">Rol 3</option>
-                  </select>
+                    <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                      Rol
+                    </label>
+                    <select
+                      id="rol"
+                      name="rol"
+                      className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                    >
+                      <option value="1">Admin</option>
+                      <option value="2">Controller</option>
+                      <option value="4">Estudiante</option>
+                    </select>
                   </div>
                   <div className="flex flex-col">
-                  <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Reclutier
-                </label>
-                  <select
-                    id="reclutador"
-                    name="reclutador"
-                    className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
-                  >
-                    <option value="recluter1">Recluter 1</option>
-                    <option value="recluter2">Recluter 2</option>
-                    <option value="recluter3">Recluter 3</option>
-                  </select>
+                    <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                      Reclutier
+                    </label>
+                    <select
+                      id="reclutador"
+                      name="reclutador"
+                      className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                    >
+                      <option value="recluter1">Recluter 1</option>
+                      <option value="recluter2">Recluter 2</option>
+                      <option value="recluter3">Recluter 3</option>
+                    </select>
                   </div>
                 </div>
               </div>

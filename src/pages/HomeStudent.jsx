@@ -21,7 +21,7 @@ const HomeStudent = () => {
           <EditProfile />
         ) : (
           <div>
-            Home del estudiante
+            Home del estudiantes
             <ReportService />
             <MyServices />
           </div>

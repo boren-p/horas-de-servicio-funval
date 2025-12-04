@@ -50,12 +50,9 @@ const Services = () => {
         <h2 className="text-xl font-bold text-gray-800">
           SERVICIOS NO REVISADOS
         </h2>
-        <a
-          href="#"
-          className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
-        >
+        <p className="text-xl text-blue-600 hover:text-blue-700 font-medium cursor-pointer transition-colors ">
           ver todos
-        </a>
+        </p>
       </div>
 
       {/* Tabla */}

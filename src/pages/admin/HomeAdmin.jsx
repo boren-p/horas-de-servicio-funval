@@ -7,7 +7,7 @@ const HomeAdmin = () => {
   const [open, setOpen] = useState(false);
   const menu = useRef(null);
   const hamburguesa = useRef(null);
-  const [datos, setDatos] = useState({})
+  const [datos, setDatos] = useState({});
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -24,18 +24,18 @@ const HomeAdmin = () => {
         );
         const user = await perfil.json();
 
-        setDatos(user)
-        setEmail(user.email)
-        setPassword(localStorage.getItem("password"))
-
+        setDatos(user);
+        setEmail(user.email);
+        setPassword(localStorage.getItem("password"));
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-
     }
 
     traerDatos();
   }, []);
+
+  console.log(datos);
 
   async function cerrarSesion() {
     try {
@@ -55,18 +55,19 @@ const HomeAdmin = () => {
       );
       if (logout) {
         localStorage.clear();
-        navigate("/")
+        navigate("/");
       }
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
-
   return (
     <div className="flex flex-col min-h-screen">
+
+
       <header className="text-white max-w-full h-25 flex justify-between px-[5%] items-center bg-[#1F4E79]">
+
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -74,16 +75,19 @@ const HomeAdmin = () => {
             className="flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded"
           >
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "rotate-45 translate-y-2" : ""
-                }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                openMenu ? "rotate-45 translate-y-2" : ""
+              }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "opacity-0" : ""
-                }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                openMenu ? "opacity-0" : ""
+              }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${openMenu ? "-rotate-45 -translate-y-2" : ""
-                }`}
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                openMenu ? "-rotate-45 -translate-y-2" : ""
+              }`}
             ></span>
           </button>
 
@@ -122,14 +126,14 @@ const HomeAdmin = () => {
         </div>
         <Link to="/admin">
           <img
-            src="/blanco.png"
+            src="/todo.png"
             alt="Funval internacional"
             className="h-20  w-auto"
           />
         </Link>
 
         {/* NAV en desktop */}
-        <nav className="hidden lg:flex items-center gap-10 text-xl">
+        <nav className="hidden lg:flex items-center justify-between  w-150 gap-10 text-2xl">
           <Link to="users">
             <nav>Usuarios</nav>
           </Link>
@@ -138,7 +142,7 @@ const HomeAdmin = () => {
         </nav>
 
         {/* Menú del usuario */}
-        <nav className="relative" ref={menu}>
+        <nav className="relative pr-10" ref={menu}>
           <img
             className=" cursor-pointer"
             width="50"
@@ -150,14 +154,16 @@ const HomeAdmin = () => {
 
           {open && (
             <div className="absolute text-black right-0 mt-2 w-48 bg-white  rounded-lg shadow-lg z-10">
-              <button
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                <Link to="edit">Editar Perfil</Link>
-              </button>
+              <Link to="edit">
+                <button
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  Editar Perfil
+                </button>
+              </Link>
 
               <button
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors border-t"
@@ -171,12 +177,69 @@ const HomeAdmin = () => {
       </header>
 
       {/* CONTENIDO */}
+
       <main className="flex items-center justify-center w-screen px-[5%] py-5">
-        <Outlet context={{ nombre: datos.full_name }} />
+        <Outlet
+          context={{
+            nombre: datos.full_name,
+            phone: datos.phone,
+            email: datos.email,
+          }}
+        />
+
+    
       </main>
 
-      <footer className="bg-[#173B63] w-full mt-auto h-20 border flex items-center">
-        footer
+      <footer className="bg-[#1F4E79] flex justify-between w-full h-40 ">
+        <div className="flex  items-center justify-center pl-5 gap-4  ">
+          <a
+            href="https://www.youtube.com/channel/UC3mlp-KW6mSDrsfsp8OOlIQ"
+            target="_blank"
+          >
+            <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png"
+              alt="youtube"
+            />
+          </a>
+
+          <div className="h-12 w-12 ">
+            <a
+              href="https://www.facebook.com/fundet?mibextid=LQQJ4d"
+              target="_blank"
+            >
+              <img
+                width="50"
+                height="20"
+                src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png"
+              />
+            </a>
+          </div>
+          <div className="h-10 w-10">
+            <a
+              href="https://www.instagram.com/funvalinternacional/?igshid=MzRlODBiNWFlZA%3D%3D"
+              target="_blank"
+            >
+              <img
+                width="50"
+                height="50"
+                src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"
+                alt="instagram"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center text-white pr-10">
+          <h2 className="font-medium tracking-widest text-2xl mb-3 ">
+            Quiénes somos
+          </h2>
+          <p className="mb-1 w-100 font-medium">
+            FUNVAL ofrece soluciones confiables e innovadoras, generando valor y
+            confianza para sus clientes.
+          </p>
+        </div>
       </footer>
     </div>
   );

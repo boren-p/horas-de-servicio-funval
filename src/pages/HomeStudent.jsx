@@ -7,12 +7,10 @@ import EditProfile from "../comps/EditProfile";
 import { useEffect, useState } from "react";
 
 const HomeStudent = () => {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
   const editar = location.pathname === "/edit";
 
-  const [datos, setDatos] = useState({})
-
+  const [datos, setDatos] = useState({});
 
   useEffect(() => {
     async function traerDatos() {
@@ -25,12 +23,10 @@ const HomeStudent = () => {
           }
         );
         const user = await perfil.json();
-        setDatos(user)
-
+        setDatos(user);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-
     }
 
     traerDatos();
@@ -41,7 +37,7 @@ const HomeStudent = () => {
       <div className="">
         <Header />
       </div>
-      <main className="grow w-full px-4 py-5">
+      <main className="grow w-full px-4 py-5 bg-[#f2f3f7]">
         {editar ? (
           <EditProfile />
         ) : (
@@ -52,7 +48,7 @@ const HomeStudent = () => {
           </div>
         )}
       </main>
-      <div className="w-full mt-auto h-20 border flex items-center justify-center">
+      <div className="w-full mt-auto h-30 border flex items-center justify-center bg-[#173B63] ">
         <Footer />
       </div>
     </div>

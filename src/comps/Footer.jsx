@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" flex justify-between w-full h-full">
+    <footer className=" flex px-[5%] justify-between w-full h-full">
       <div className="flex  items-center justify-center pl-5 gap-4  ">
         <a
           href="https://www.youtube.com/channel/UC3mlp-KW6mSDrsfsp8OOlIQ"
@@ -43,11 +43,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center text-white pr-10">
+      <div className="flex flex-col w-70 items-center justify-center text-white">
         <h2 className="font-medium tracking-widest text-2xl mb-3 ">
           Quiénes somos
         </h2>
-        <p className="mb-1 w-100 font-medium">
+        <p className="mb-1 font-medium">
           FUNVAL ofrece soluciones confiables e innovadoras, generando valor y
           confianza para sus clientes.
         </p>

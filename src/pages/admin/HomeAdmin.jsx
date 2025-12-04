@@ -66,7 +66,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="flex flex-col w-full min-h-screen ">
-      <header className="text-white w-full h-25 flex justify-between items-center bg-[#1F4E79]">
+      <header className="text-white w-full h-25 px-[5%] flex justify-between items-center bg-[#1F4E79]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -118,12 +118,12 @@ const HomeAdmin = () => {
           )}
         </div>
         {/* logo y rutas */}
-        <div className="  flex ">
+        <div className="  flex gap-5  ">
           <Link to="/admin">
             <img
               src="/todo.png"
               alt="Funval internacional"
-              className="h-20 w-auto max-w-full"
+              className="h-15 w-auto max-w-full"
             />
           </Link>
 
@@ -139,7 +139,7 @@ const HomeAdmin = () => {
         </div>
 
         {/* Menú del usuario */}
-        <nav className="relative mr-4 " ref={menu}>
+        <nav className="relative" ref={menu}>
           <img
             className=" cursor-pointer"
             width="50"
@@ -185,7 +185,7 @@ const HomeAdmin = () => {
         />
       </main>
 
-      <footer className="bg-[#1F4E79] flex justify-between w-full h-40 ">
+      <footer className="bg-[#1F4E79] flex justify-around w-full h-40 ">
         <div className="flex  items-center justify-center pl-5 gap-4  ">
           <a
             href="https://www.youtube.com/channel/UC3mlp-KW6mSDrsfsp8OOlIQ"
@@ -226,7 +226,7 @@ const HomeAdmin = () => {
           </div>
         </div>
 
-        <div className=" w-[350px] flex flex-col items-center justify-center text-white ">
+        <div className=" w-[250px] flex flex-col justify-center items-center text-white ">
           <h2 className="font-medium tracking-widest text-2xl mb-3 ">
             Quiénes somos
           </h2>

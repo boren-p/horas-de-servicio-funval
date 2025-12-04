@@ -36,10 +36,10 @@ const HomeStudent = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="">
+      <div>
         <Header />
       </div>
-      <main className="grow w-full px-4 py-5 bg-[#f2f3f7]">
+      <main className="grow w-full px-[5%] py-5 bg-[#f2f3f7]">
         {editar ? (
           <EditProfile datos={datos} />
         ) : (

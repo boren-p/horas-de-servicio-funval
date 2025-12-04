@@ -32,6 +32,8 @@ const HomeStudent = () => {
     traerDatos();
   }, []);
 
+  console.log(datos);
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="">

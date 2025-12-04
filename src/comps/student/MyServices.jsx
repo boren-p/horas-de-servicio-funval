@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const MyServices = () => {
-    const estado = "Aprobado"
+
     const [servicios, setServicios] = useState();
 
     useEffect(() => {
@@ -49,9 +49,9 @@ const MyServices = () => {
                                 <td className="p-3 border-b">{serv.amount_reported}</td>
                                 <td className="p-3 border-b">
                                     <span
-                                        className={`px-3 py-1 rounded-full text-sm font-semibold ${estado === "Approvide"
+                                        className={`px-3 py-1 rounded-full text-sm font-semibold ${serv.status === "Approved"
                                             ? "bg-green-100 text-green-700"
-                                            : estado === "Pending"
+                                            : serv.status === "Pending"
                                                 ? "bg-yellow-100 text-yellow-700"
                                                 : "bg-red-100 text-red-700"
                                             }`}
@@ -60,7 +60,7 @@ const MyServices = () => {
                                     </span>
                                 </td>
                                 <td className="p-3 border-b">
-                                    {serv.reviewer ? serv.reviewer : "Sin revisar"}
+                                    {serv.reviewer ? serv.reviewer.full_name : "Sin revisar"}
                                 </td>
                             </tr>
                         ))}

@@ -23,8 +23,8 @@ const UserList = () => {
   ];
 
   return (
-    <div className="w-full">
-      <div className="bg-white rounded-xl shadow-xl overflow-auto">
+    <div className="w-full  min-h-screen overflow-auto">
+      <div className="bg-white rounded-xl shadow-xl overflow-auto ">
         <div className=" border-b border-gray-200 px-6 py-5">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Estudiantes</h2>
 
@@ -42,29 +42,29 @@ const UserList = () => {
         </div>
 
         {/* Tabla */}
-        <div className="overflow-x-auto  w-full max-w-full">
+        <div>
           <table className="w-full">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className="text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Estado
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Nombre
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Escuela
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Controlador
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Responsable
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Horas Reportadas
                 </th>
-                <th className="px-2 py-2 md:px-6 md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Contacto
                 </th>
               </tr>
@@ -75,27 +75,15 @@ const UserList = () => {
                   key={i}
                   className="border-b border-gray-100 hover:bg-blue-50 transition-colors"
                 >
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.estado}
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.nombre}
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.escuela}
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.controlador}
-                  </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.responsable}
-                  </td>
-                  <td className="text-lg flex items-center justify-center px-2 py-2 md:px-6 md:py-4 text-gray-600">
+                  <td className=" md:py-4 text-gray-600">{item.estado}</td>
+                  <td className=" md:py-4 text-gray-600">{item.nombre}</td>
+                  <td className=" md:py-4 text-gray-600">{item.escuela}</td>
+                  <td className=" md:py-4 text-gray-600">{item.controlador}</td>
+                  <td className=" md:py-4 text-gray-600">{item.responsable}</td>
+                  <td className="text-lg flex items-center justify-center  md:py-4 text-gray-600">
                     {item.horas}
                   </td>
-                  <td className="px-2 py-2 md:px-6 md:py-4 text-gray-600">
-                    {item.contacto}
-                  </td>
+                  <td className=" md:py-4 text-gray-600">{item.contacto}</td>
                 </tr>
               ))}
             </tbody>

@@ -61,6 +61,7 @@ export default function Login() {
       );
 
       const user = await perfil.json();
+      localStorage.setItem("role", user.role.id)
       console.log("Perfil:", user);
 
       if (user.role.id === 1) {

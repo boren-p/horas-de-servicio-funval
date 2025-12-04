@@ -13,34 +13,39 @@ const Services = () => {
     setServicioSeleccionado(servicio);
   }
 
-  function cerrarModal() {
-    setModal(false);
-  }
+
   const [servicios, setServicios] = useState();
 
-  useEffect(() => {
-    async function traerServicios() {
-      try {
-        const myServicios = await fetch(
-          "https://www.hs-service.api.crealape.com/api/v1/services",
-          {
-            method: "GET",
-            credentials: "include", // Necesario para enviar cookie
-          }
-        );
-        const data = await myServicios.json();
-        const filtrados = data.filter(serv => serv.reviewer === null);
-        setServicios(filtrados)
-        console.log(filtrados)
 
-      } catch (error) {
-        console.log(error)
-      }
+  async function traerServicios() {
+    try {
+      const myServicios = await fetch(
+        "https://www.hs-service.api.crealape.com/api/v1/services",
+        {
+          method: "GET",
+          credentials: "include", // Necesario para enviar cookie
+        }
+      );
+      const data = await myServicios.json();
+      const filtrados = data.filter(serv => serv.reviewer === null);
+      setServicios(filtrados)
+      console.log(filtrados)
 
+    } catch (error) {
+      console.log(error)
     }
 
+  }
+
+  useEffect(() => {
     traerServicios();
   }, []);
+
+  function cerrarModal() {
+    setModal(false);
+    traerServicios()
+  }
+
 
   return (
     <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden ">

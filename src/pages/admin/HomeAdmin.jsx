@@ -121,22 +121,26 @@ const HomeAdmin = () => {
             </div>
           )}
         </div>
-        <Link to="/admin">
-          <img
-            src="/todo.png"
-            alt="Funval internacional"
-            className="h-20 w-auto max-w-full"
-          />
-        </Link>
-
-        {/* NAV en desktop */}
-        <nav className="hidden border lg:flex items-center justify-between  w-[150px] gap-10 text-2xl">
-          <Link to="users">
-            <nav>Usuarios</nav>
+        {/* logo y rutas */}
+        <div className="  flex ">
+          <Link to="/admin">
+            <img
+              src="/todo.png"
+              alt="Funval internacional"
+              className="h-20 w-auto max-w-full"
+            />
           </Link>
-          <nav>(Escuelas)</nav>
-          <nav>(Categorias)</nav>
-        </nav>
+
+          {/* table*/}
+          <nav className="hidden  lg:flex items-center justify-between w-[200px] gap-10 text-2xl">
+            <Link to="/admin">
+              <nav>Home</nav>
+            </Link>
+            <Link to="users">
+              <nav>Usuarios</nav>
+            </Link>
+          </nav>
+        </div>
 
         {/* Menú del usuario */}
         <nav className="relative " ref={menu}>

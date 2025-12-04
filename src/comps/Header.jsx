@@ -7,11 +7,11 @@ const Header = () => {
   const menuStudent = useRef(null);
 
   return (
-    <header className="bg-[#173B63]  h-25 border flex justify-between items-center">
+    <header className="bg-[#173B63]  h-25 border flex justify-between items-center px-[5%]">
       <Link to="/student">
-        <img src="/todo.png" alt="Funval internacional" className="h-20 " />
+        <img src="/todo.png" alt="Funval internacional" className="h-15 " />
       </Link>
-      <nav className="relative pr-5 " ref={menuStudent}>
+      <nav className="relative " ref={menuStudent}>
         <img
           className=" cursor-pointer"
           width="50"

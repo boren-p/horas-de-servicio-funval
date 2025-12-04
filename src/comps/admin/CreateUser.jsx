@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function NuevoUsuarioCard() {
   return (
     <div className="min-h-screen p-4  flex items-center justify-center">
-      <div className="w-full max-w-4xl md:rounded-2xl shadow-xl overflow-hidden ">
+      <div className="w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden ">
         {/* Header con gradiente llamativo */}
         <div className="bg-[#1F4E79] px-8 py-6 text-center">
           <h2 className="text-white text-xl md:text-3xl font-bold tracking-wide uppercase">
@@ -140,11 +140,11 @@ export default function NuevoUsuarioCard() {
 
             {/* País Controlador y Rol Reclutador */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex flex-col space-y-2">
-                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  País y Controlador
+              <div className="flex flex-col space-y-5 ">
+                <div className="flex flex-col">
+                <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  País
                 </label>
-                <div className="grid grid-cols-2 gap-4">
                   <select
                     id="pais"
                     name="pais"
@@ -154,6 +154,11 @@ export default function NuevoUsuarioCard() {
                     <option value="pais2">País 2</option>
                     <option value="pais3">País 3</option>
                   </select>
+                  </div>
+                  <div className="flex flex-col pb">
+                  <label className=" pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  Controller
+                </label>
                   <select
                     id="controlador"
                     name="controlador"
@@ -163,23 +168,30 @@ export default function NuevoUsuarioCard() {
                     <option value="controlador2">Controlador 2</option>
                     <option value="controlador3">Controlador 3</option>
                   </select>
-                </div>
+                  </div>
+                
               </div>
 
               <div className="flex flex-col space-y-2">
-                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Rol y Reclutador
+                <div className="flex flex-col pb">
+                  <div className="flex flex-col pb-5">
+                <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  Rol
                 </label>
-                <div className="grid grid-cols-2 gap-4">
                   <select
                     id="rol"
                     name="rol"
-                    className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
                   >
                     <option value="rol1">Rol 1</option>
                     <option value="rol2">Rol 2</option>
                     <option value="rol3">Rol 3</option>
                   </select>
+                  </div>
+                  <div className="flex flex-col">
+                  <label className="pb-2 text-xs font-bold text-gray-700 uppercase tracking-wider">
+                  Reclutier
+                </label>
                   <select
                     id="reclutador"
                     name="reclutador"
@@ -189,6 +201,7 @@ export default function NuevoUsuarioCard() {
                     <option value="recluter2">Recluter 2</option>
                     <option value="recluter3">Recluter 3</option>
                   </select>
+                  </div>
                 </div>
               </div>
             </div>

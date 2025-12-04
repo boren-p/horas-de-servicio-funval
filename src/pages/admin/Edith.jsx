@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 const Edith = () => {
   const [edit, setEdit] = useState(false);
+
+  const { nombre, phone, email } = useOutletContext();
+  const [name, setName] = useState(nombre);
+  const [correo, setCorreo] = useState(email);
+  const [pais, setPais] = useState("bolivia");
+  const [iphone, setIphone] = useState(phone);
 
   return (
     <div className=" bg-white p-10 rounded-2xl  ">
@@ -32,9 +39,7 @@ const Edith = () => {
                   <label className=" font-bold text-gray-500 uppercase mb-1">
                     Nombre
                   </label>
-                  <p className="font-medium uppercase mt-2">
-                    Pepito Najasapemapitilan
-                  </p>
+                  <p className="font-medium uppercase mt-2">{nombre}</p>
                 </div>
 
                 <div className=" pb-2">
@@ -48,16 +53,14 @@ const Edith = () => {
                   <label className="block  font-bold text-gray-500 uppercase mb-1">
                     Número de Teléfono
                   </label>
-                  <p className="font-medium uppercase mt-2">+591 74627838</p>
+                  <p className="font-medium uppercase mt-2">{phone} </p>
                 </div>
 
                 <div className=" pb-2">
                   <label className="block  font-bold text-gray-500 uppercase mb-1">
                     E-mail
                   </label>
-                  <p className="font-medium uppercase mt-2">
-                    moises0928m@gmail.com
-                  </p>
+                  <p className="font-medium uppercase mt-2">{email}</p>
                 </div>
               </div>
             </div>
@@ -79,7 +82,9 @@ const Edith = () => {
                     </label>
                     <input
                       type="text"
-                      placeholder="Nombre"
+                      value={name}
+                      placeholder={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>
@@ -90,7 +95,9 @@ const Edith = () => {
                     </label>
                     <input
                       type="text"
-                      placeholder="País"
+                      value={pais}
+                      placeholder={pais}
+                      onChange={(e) => setPais(e.target.value)}
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>
@@ -100,8 +107,9 @@ const Edith = () => {
                       Número de Teléfono
                     </label>
                     <input
+                      value={iphone}
                       type="tel"
-                      placeholder="Número de teléfono"
+                      placeholder={(e) => setIphone(e.target.value)}
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>
@@ -112,7 +120,8 @@ const Edith = () => {
                     </label>
                     <input
                       type="email"
-                      placeholder="Correo"
+                      placeholder={correo}
+                      onChange={(e) => setCorreo(e.target.value)}
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>

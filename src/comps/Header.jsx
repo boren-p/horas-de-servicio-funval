@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="bg-[#173B63]  h-25 border flex justify-between items-center">
       <Link to="/student">
-        <img src="/blanco.png" alt="Funval internacional" className="h-20 " />
+        <img src="/todo.png" alt="Funval internacional" className="h-20 " />
       </Link>
       <nav className="relative pr-5 " ref={menuStudent}>
         <img

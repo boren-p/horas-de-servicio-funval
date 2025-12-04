@@ -87,18 +87,6 @@ const EditProfile = () => {
                       className="w-full border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>
-
-                  <div className=" pb-2">
-                    <label className="block  font-bold text-gray-500 uppercase mb-1">
-                      País
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="País"
-                      className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
-                    />
-                  </div>
-
                   <div className="pb-2">
                     <label className="block  font-bold text-gray-500 uppercase mb-1">
                       Número de Teléfono
@@ -119,6 +107,9 @@ const EditProfile = () => {
                       placeholder="Correo"
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
+                  </div>
+                  <div className=" pb-2">
+                    <button>Guardar cambios</button>
                   </div>
                 </div>
               </div>

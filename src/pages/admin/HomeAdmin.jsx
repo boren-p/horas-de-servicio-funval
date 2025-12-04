@@ -62,6 +62,8 @@ const HomeAdmin = () => {
     }
   }
 
+  console.log(datos);
+
   return (
     <div className="flex flex-col w-full min-h-screen ">
       <header className="text-white w-full h-25 flex justify-between items-center bg-[#1F4E79]">
@@ -95,48 +97,46 @@ const HomeAdmin = () => {
                     setOpenMenu(false);
                   }}
                 >
-                  Usuarios
+                  Home
                 </button>
               </Link>
 
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
-                Escuelas
-              </button>
-              <button
-                className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors"
-                onClick={() => {
-                  setOpenMenu(false);
-                }}
-              >
-                Categorías
-              </button>
+              <Link to="users">
+                <button
+                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Usuarios
+                </button>
+              </Link>
             </div>
           )}
         </div>
-        <Link to="/admin">
-          <img
-            src="/todo.png"
-            alt="Funval internacional"
-            className="h-20 w-auto max-w-full"
-          />
-        </Link>
-
-        {/* NAV en desktop */}
-        <nav className="hidden border lg:flex items-center justify-between  w-[150px] gap-10 text-2xl">
-          <Link to="users">
-            <nav>Usuarios</nav>
+        {/* logo y rutas */}
+        <div className="  flex ">
+          <Link to="/admin">
+            <img
+              src="/todo.png"
+              alt="Funval internacional"
+              className="h-20 w-auto max-w-full"
+            />
           </Link>
-          <nav>(Escuelas)</nav>
-          <nav>(Categorias)</nav>
-        </nav>
+
+          {/* table*/}
+          <nav className="hidden  lg:flex items-center justify-between w-[200px] gap-10 text-2xl">
+            <Link to="/admin">
+              <nav>Home</nav>
+            </Link>
+            <Link to="users">
+              <nav>Usuarios</nav>
+            </Link>
+          </nav>
+        </div>
 
         {/* Menú del usuario */}
-        <nav className="relative " ref={menu}>
+        <nav className="relative mr-4 " ref={menu}>
           <img
             className=" cursor-pointer"
             width="50"
@@ -172,7 +172,7 @@ const HomeAdmin = () => {
 
       {/* CONTENIDO */}
 
-      <main className=" w-auto px-[5%] py-5 ">
+      <main className=" w-auto px-[5%] py-5 bg-[#f2f3f7] ">
         <Outlet
           context={{
             nombre: datos.full_name,
@@ -223,11 +223,11 @@ const HomeAdmin = () => {
           </div>
         </div>
 
-        <div className="border border-black flex flex-col items-center justify-center text-white ">
+        <div className=" w-[350px] flex flex-col items-center justify-center text-white ">
           <h2 className="font-medium tracking-widest text-2xl mb-3 ">
             Quiénes somos
           </h2>
-          <p className="mb-1 w-[200px] font-medium">
+          <p className="mb-1 w-full flex justify-center items-center  font-medium">
             FUNVAL ofrece soluciones confiables e innovadoras, generando valor y
             confianza para sus clientes.
           </p>

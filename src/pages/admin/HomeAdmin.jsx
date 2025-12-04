@@ -74,19 +74,16 @@ const HomeAdmin = () => {
             className="flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded"
           >
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                openMenu ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "rotate-45 translate-y-2" : ""
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                openMenu ? "opacity-0" : ""
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "opacity-0" : ""
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                openMenu ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "-rotate-45 -translate-y-2" : ""
+                }`}
             ></span>
           </button>
 
@@ -175,7 +172,7 @@ const HomeAdmin = () => {
 
       {/* CONTENIDO */}
 
-      <main className="h-screen w-auto px-[5%] py-5 bg-[#f2f3f7] ">
+      <main className="h-full w-auto px-[5%] py-5 bg-[#f2f3f7] ">
         <Outlet
           context={{
             nombre: datos.full_name,

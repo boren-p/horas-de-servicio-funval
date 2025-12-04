@@ -23,7 +23,7 @@ const UserList = () => {
   ];
 
   return (
-    <div className="w-full  min-h-screen overflow-auto">
+    <div className="w-full   overflow-auto">
       <div className="bg-white rounded-xl shadow-xl overflow-auto ">
         <div className=" border-b border-gray-200 px-6 py-5">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Estudiantes</h2>
@@ -43,7 +43,7 @@ const UserList = () => {
 
         {/* Tabla */}
         <div>
-          <table className="w-full">
+          <table className=" w-full">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
                 <th className="text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">

@@ -41,12 +41,12 @@ const HomeStudent = () => {
       </div>
       <main className="grow w-full px-[5%] py-5 bg-[#f2f3f7]">
         {editar ? (
-          <EditProfile />
+          <EditProfile datos={datos} />
         ) : (
-          <div className="w-full">
-            <div className="w-full flex flex-row-reverse">
-            <h1 className="text-3xl font-semibold">Bienvenido {datos.full_name}</h1>
-            </div>
+          <div>
+            <h1 className="text-3xl font-medium tracking-widest pl-4">
+              Bienvenido: {datos.full_name}
+            </h1>
             <ReportService />
             <MyServices />
           </div>

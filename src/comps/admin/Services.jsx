@@ -6,8 +6,6 @@ const Services = () => {
   const [modal, setModal] = useState(false);
   const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
 
-
-
   function abrirModal(servicio) {
     setModal(true);
     setServicioSeleccionado(servicio);
@@ -48,9 +46,14 @@ const Services = () => {
 
 
   return (
-    <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden ">
+    <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden">
       {/* Header de la card */}
-      {modal && <ReviewService closeModal={cerrarModal} servicio={servicioSeleccionado} />}
+      {modal && (
+        <ReviewService
+          closeModal={cerrarModal}
+          servicio={servicioSeleccionado}
+        />
+      )}
       <div className=" border-b border-gray-200 px-6 py-4 flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-800">
           SERVICIOS NO REVISADOS
@@ -83,10 +86,15 @@ const Services = () => {
             {servicios?.map((serv) => (
               <tr
                 key={serv.id}
-                className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+              >
                 <td className="px-6 py-4 text-gray-600">{serv.user.f_name}</td>
-                <td className="px-6 py-4 text-gray-600">{serv.category.name}</td>
-                <td className="px-6 py-4 text-gray-600">{serv.amount_reported}</td>
+                <td className="px-6 py-4 text-gray-600">
+                  {serv.category.name}
+                </td>
+                <td className="px-6 py-4 text-gray-600">
+                  {serv.amount_reported}
+                </td>
                 <td className="px-6 py-4 text-right">
                   <button
                     onClick={() => abrirModal(serv)}
@@ -97,7 +105,6 @@ const Services = () => {
                 </td>
               </tr>
             ))}
-
           </tbody>
         </table>
       </div>

@@ -58,7 +58,7 @@ const ReportService = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-w-screen">
+    <div className="border p-6 bg-gray-100 ">
       <form
         onSubmit={handleSubmit}
         className="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4"

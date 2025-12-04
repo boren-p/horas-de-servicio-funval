@@ -1,5 +1,5 @@
 import React from "react";
-import { useReducer } from 'react';
+import { useReducer } from "react";
 
 const initialState = {
   nombre1: "",
@@ -54,7 +54,6 @@ function reducer(state, action) {
 }
 
 export default function NuevoUsuarioCard() {
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = async (e) => {
@@ -68,7 +67,7 @@ export default function NuevoUsuarioCard() {
     formData.append("email", state.email);
     formData.append("password", state.password);
     if (state.escuela.length > 0) {
-      state.escuela.forEach(num => {
+      state.escuela.forEach((num) => {
         formData.append("schools[]", num);
       });
     } else {
@@ -77,7 +76,7 @@ export default function NuevoUsuarioCard() {
     }
     formData.append("phone", state.phone);
     formData.append("role_id", state.rol);
-    formData.append("country_id", state.pais)
+    formData.append("country_id", state.pais);
     formData.append("controller_id", state.controller || "");
     formData.append("recruiter_id", state.reclutier || "");
 
@@ -92,14 +91,12 @@ export default function NuevoUsuarioCard() {
       );
 
       console.log("Respuesta del servidor", await respuesta.json());
-
     } catch (error) {
       console.log(error);
     }
 
     dispatch({ type: "RESET" });
   };
-
 
   return (
     <div className=" flex items-center justify-center">
@@ -126,7 +123,7 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.nombre1}
                   onChange={(e) => {
-                    dispatch({ type: "SET_NOMBRE1", payload: e.target.value })
+                    dispatch({ type: "SET_NOMBRE1", payload: e.target.value });
                   }}
                   type="text"
                   id="nombre1"
@@ -146,7 +143,7 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.nombre2}
                   onChange={(e) => {
-                    dispatch({ type: "SET_NOMBRE2", payload: e.target.value })
+                    dispatch({ type: "SET_NOMBRE2", payload: e.target.value });
                   }}
                   type="text"
                   id="nombre2"
@@ -169,7 +166,10 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.apellido1}
                   onChange={(e) => {
-                    dispatch({ type: "SET_APELLIDO1", payload: e.target.value })
+                    dispatch({
+                      type: "SET_APELLIDO1",
+                      payload: e.target.value,
+                    });
                   }}
                   type="text"
                   id="apellido1"
@@ -189,7 +189,10 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.apellido2}
                   onChange={(e) => {
-                    dispatch({ type: "SET_APELLIDO2", payload: e.target.value })
+                    dispatch({
+                      type: "SET_APELLIDO2",
+                      payload: e.target.value,
+                    });
                   }}
                   type="text"
                   id="apellido2"
@@ -212,7 +215,7 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.email}
                   onChange={(e) => {
-                    dispatch({ type: "SET_EMAIL", payload: e.target.value })
+                    dispatch({ type: "SET_EMAIL", payload: e.target.value });
                   }}
                   type="email"
                   id="email"
@@ -232,7 +235,7 @@ export default function NuevoUsuarioCard() {
                 <input
                   /* value={state.phone} */
                   onChange={(e) => {
-                    dispatch({ type: "SET_PHONE", payload: e.target.value })
+                    dispatch({ type: "SET_PHONE", payload: e.target.value });
                   }}
                   type="number"
                   id="number"
@@ -255,15 +258,14 @@ export default function NuevoUsuarioCard() {
                 <input
                   value={state.password}
                   onChange={(e) => {
-                    dispatch({ type: "SET_PASSWORD", payload: e.target.value })
+                    dispatch({ type: "SET_PASSWORD", payload: e.target.value });
                   }}
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Contraseña"
                   className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer"
-                >
-                </input>
+                ></input>
               </div>
               <div className="flex flex-col space-y-2">
                 <label
@@ -275,7 +277,7 @@ export default function NuevoUsuarioCard() {
                 <select
                   value={state.pais}
                   onChange={(e) => {
-                    dispatch({ type: "SET_PAIS", payload: e.target.value })
+                    dispatch({ type: "SET_PAIS", payload: e.target.value });
                   }}
                   id="pais"
                   name="pais"
@@ -287,7 +289,6 @@ export default function NuevoUsuarioCard() {
               </div>
             </div>
 
-
             {/* País Controlador y Rol Reclutador */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col space-y-5 ">
@@ -298,7 +299,7 @@ export default function NuevoUsuarioCard() {
                   <select
                     value={state.rol}
                     onChange={(e) => {
-                      dispatch({ type: "SET_ROL", payload: e.target.value })
+                      dispatch({ type: "SET_ROL", payload: e.target.value });
                     }}
                     id="rol"
                     name="rol"
@@ -320,7 +321,10 @@ export default function NuevoUsuarioCard() {
                       value={state.controller}
                       onChange={(e) => {
                         const val = e.target.value;
-                        dispatch({ type: "SET_CONTROLLER", payload: val ? Number(val) : null });
+                        dispatch({
+                          type: "SET_CONTROLLER",
+                          payload: val ? Number(val) : null,
+                        });
                       }}
                       id="controlador"
                       name="controlador"
@@ -333,7 +337,6 @@ export default function NuevoUsuarioCard() {
                     </select>
                   </div>
                 )}
-
               </div>
 
               <div className="flex flex-col space-y-2">
@@ -354,11 +357,13 @@ export default function NuevoUsuarioCard() {
 
                             const newSchools = e.target.checked
                               ? [...state.escuela, val]
-                              : state.escuela.filter(x => x !== val);
+                              : state.escuela.filter((x) => x !== val);
 
-                            dispatch({ type: "SET_ESCUELA", payload: newSchools });
-                          }
-                          }
+                            dispatch({
+                              type: "SET_ESCUELA",
+                              payload: newSchools,
+                            });
+                          }}
                           className="w-4 h-4"
                         />
                         <span>Programación</span>
@@ -374,11 +379,13 @@ export default function NuevoUsuarioCard() {
 
                             const newSchools = e.target.checked
                               ? [...state.escuela, val]
-                              : state.escuela.filter(x => x !== val);
+                              : state.escuela.filter((x) => x !== val);
 
-                            dispatch({ type: "SET_ESCUELA", payload: newSchools });
-                          }
-                          }
+                            dispatch({
+                              type: "SET_ESCUELA",
+                              payload: newSchools,
+                            });
+                          }}
                           className="w-4 h-4"
                         />
                         <span>Ingles</span>
@@ -395,16 +402,17 @@ export default function NuevoUsuarioCard() {
 
                             const newSchools = e.target.checked
                               ? [...state.escuela, val]
-                              : state.escuela.filter(x => x !== val);
+                              : state.escuela.filter((x) => x !== val);
 
-                            dispatch({ type: "SET_ESCUELA", payload: newSchools });
-                          }
-                          }
+                            dispatch({
+                              type: "SET_ESCUELA",
+                              payload: newSchools,
+                            });
+                          }}
                           className="w-4 h-4"
                         />
                         <span>Matematicas</span>
                       </label>
-
                     </div>
                   )}
                   {state.rol === 4 && (
@@ -413,10 +421,12 @@ export default function NuevoUsuarioCard() {
                         Escuela
                       </label>
                       <select
-
                         value={state.escuela}
                         onChange={(e) => {
-                          dispatch({ type: "SET_ESCUELA", payload: [Number(e.target.value)] })
+                          dispatch({
+                            type: "SET_ESCUELA",
+                            payload: [Number(e.target.value)],
+                          });
                         }}
                         id="Escuela"
                         name="Escuela"
@@ -427,7 +437,6 @@ export default function NuevoUsuarioCard() {
                         <option value={2}>Ingles</option>
                         <option value={3}>Matematicas</option>
                       </select>
-
                     </div>
                   )}
 
@@ -439,7 +448,10 @@ export default function NuevoUsuarioCard() {
                       <select
                         value={state.reclutier}
                         onChange={(e) => {
-                          dispatch({ type: "SET_RECLUITER", payload: Number(e.target.value) })
+                          dispatch({
+                            type: "SET_RECLUITER",
+                            payload: Number(e.target.value),
+                          });
                         }}
                         id="reclutador"
                         name="reclutador"
@@ -452,18 +464,21 @@ export default function NuevoUsuarioCard() {
                       </select>
                     </div>
                   )}
-
                 </div>
               </div>
             </div>
 
             {/* Botón Submit */}
-            <button onClick={handleSubmit} type="submit" className="w-full py-4 bg-[#ffb443] text-white text-lg font-bold uppercase tracking-wide rounded-lg hover:scale-102 transition-all">
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="w-full py-4 bg-[#ffb443] text-white text-lg font-bold uppercase tracking-wide rounded-lg hover:scale-102 transition-all"
+            >
               Crear Usuario
             </button>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

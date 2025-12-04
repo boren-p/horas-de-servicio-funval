@@ -63,11 +63,8 @@ const HomeAdmin = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-
-
-      <header className="text-white max-w-full h-25 flex justify-between px-[5%] items-center bg-[#1F4E79]">
-
+    <div className="flex flex-col w-full min-h-screen ">
+      <header className="text-white w-full h-25 flex justify-between items-center bg-[#1F4E79]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -75,17 +72,17 @@ const HomeAdmin = () => {
             className="flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded"
           >
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
                 openMenu ? "rotate-45 translate-y-2" : ""
               }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
                 openMenu ? "opacity-0" : ""
               }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${
                 openMenu ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></span>
@@ -128,12 +125,12 @@ const HomeAdmin = () => {
           <img
             src="/todo.png"
             alt="Funval internacional"
-            className="h-20  w-auto"
+            className="h-20 w-auto max-w-full"
           />
         </Link>
 
         {/* NAV en desktop */}
-        <nav className="hidden lg:flex items-center justify-between  w-150 gap-10 text-2xl">
+        <nav className="hidden border lg:flex items-center justify-between  w-[150px] gap-10 text-2xl">
           <Link to="users">
             <nav>Usuarios</nav>
           </Link>
@@ -142,7 +139,7 @@ const HomeAdmin = () => {
         </nav>
 
         {/* Menú del usuario */}
-        <nav className="relative pr-10" ref={menu}>
+        <nav className="relative " ref={menu}>
           <img
             className=" cursor-pointer"
             width="50"
@@ -178,7 +175,7 @@ const HomeAdmin = () => {
 
       {/* CONTENIDO */}
 
-      <main className="flex items-center justify-center w-screen px-[5%] py-5">
+      <main className=" w-auto px-[5%] py-5 ">
         <Outlet
           context={{
             nombre: datos.full_name,
@@ -186,8 +183,6 @@ const HomeAdmin = () => {
             email: datos.email,
           }}
         />
-
-    
       </main>
 
       <footer className="bg-[#1F4E79] flex justify-between w-full h-40 ">
@@ -231,11 +226,11 @@ const HomeAdmin = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center text-white pr-10">
+        <div className="border border-black flex flex-col items-center justify-center text-white ">
           <h2 className="font-medium tracking-widest text-2xl mb-3 ">
             Quiénes somos
           </h2>
-          <p className="mb-1 w-100 font-medium">
+          <p className="mb-1 w-[200px] font-medium">
             FUNVAL ofrece soluciones confiables e innovadoras, generando valor y
             confianza para sus clientes.
           </p>

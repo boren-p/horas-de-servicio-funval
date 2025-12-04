@@ -87,7 +87,8 @@ const Edith = () => {
                     <input
                       value={iphone}
                       type="tel"
-                      placeholder={(e) => setIphone(e.target.value)}
+                      placeholder={iphone}
+                      onChange={(e) => setIphone(e.target.value)}
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
                     />
                   </div>
@@ -98,6 +99,7 @@ const Edith = () => {
                     </label>
                     <input
                       type="email"
+                      value={correo}
                       placeholder={correo}
                       onChange={(e) => setCorreo(e.target.value)}
                       className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"

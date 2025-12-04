@@ -45,6 +45,7 @@ const UserList = () => {
 
   return (
     <div className="w-full  min-h-screen overflow-auto ">
+
       <div className="bg-white rounded-xl shadow-xl overflow-auto ">
         <div className=" border-b border-gray-200 px-6 py-5 ">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Usuarios</h2>
@@ -100,9 +101,11 @@ const UserList = () => {
 
 
         {/* Tabla */}
+
         <div className="w-full flex justify-center items-center">
           <table className="w-full max-w-4xl ">
             <thead className="">
+
               <tr className="bg-gray-50 border-b border-gray-200">
                 <th className="text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Estado

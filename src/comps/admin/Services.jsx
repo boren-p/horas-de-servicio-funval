@@ -33,30 +33,30 @@ const Services = () => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
-                Exalumno
+            <tr className="bg-gray-50 border-b border-gray-200 ">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                Alumno
               </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 Servicio
               </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 # de Horas
               </th>
-              <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 Acción
               </th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-              <td className="px-6 py-4 text-gray-600">datos</td>
-              <td className="px-6 py-4 text-gray-600">datos</td>
-              <td className="px-6 py-4 text-gray-600">datos</td>
-              <td className="px-6 py-4 text-right">
+              <td className="px-6 py-4 text-gray-600 text-center">datos</td>
+              <td className="px-6 py-4 text-gray-600 text-center">datos</td>
+              <td className="px-6 py-4 text-gray-600 text-center">datos</td>
+              <td className="px-6 py-4 text-right flex justify-center">
                 <button
                   onClick={abrirModal}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition-colors shadow-md hover:shadow-lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-1 rounded-lg transition-colors shadow-md hover:shadow-lg"
                 >
                   Ver más
                 </button>

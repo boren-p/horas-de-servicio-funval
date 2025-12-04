@@ -66,7 +66,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="text-white max-w-full h-25 flex justify-evenly items-center bg-[#1F4E79]">
+      <header className="text-white max-w-full h-25 flex justify-between px-[5%] items-center bg-[#1F4E79]">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
@@ -171,7 +171,7 @@ const HomeAdmin = () => {
       </header>
 
       {/* CONTENIDO */}
-      <main className="grow w-full px-4 py-5">
+      <main className="flex items-center justify-center w-screen px-[5%] py-5">
         <Outlet context={{ nombre: datos.full_name }} />
       </main>
 

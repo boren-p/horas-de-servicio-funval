@@ -62,17 +62,17 @@ const Services = () => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
-                Exalumno
+            <tr className="bg-gray-50 border-b border-gray-200 ">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                Alumno
               </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 Servicio
               </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 # de Horas
               </th>
-              <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                 Acción
               </th>
             </tr>
@@ -95,6 +95,7 @@ const Services = () => {
                 </td>
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>

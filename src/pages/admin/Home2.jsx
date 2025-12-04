@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 const Home2 = () => {
     const { nombre } = useOutletContext();
     return (
-        <div className=" rounded-2xl p-2 flex flex-col gap-8">
+        <div className=" rounded-2xl p-2 flex flex-col gap-8 w-full">
             <div className='flex w-full flex-row-reverse'>
             <h1 className='font-semibold text-4xl'>Bienvenido, {nombre}</h1>
             </div>

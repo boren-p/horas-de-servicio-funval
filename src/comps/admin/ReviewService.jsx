@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import Loader from '../Loader';
 
 const ReviewService = ({ closeModal, servicio }) => {
     const { id } = servicio;
@@ -9,6 +10,7 @@ const ReviewService = ({ closeModal, servicio }) => {
     const [amount_approved, setAmount_approved] = useState("");
     const [comment, setComment] = useState("");
     const [status, setStatus] = useState("")
+    const [loading, setLoading] = useState(false);
 
     function reviewer() {
         setRevisar(true);
@@ -60,35 +62,64 @@ const ReviewService = ({ closeModal, servicio }) => {
     }, [id]);
 
     async function aprobar() {
+        setLoading(true)
         try {
-            const myServicios = await fetch(`https://www.hs-service.api.crealape.com/api/v1/review/${id}`,
-                {
-                    method: "PATCH",
-                    credentials: "include",
-                    headers: {
+            const revisar = await fetch(`https://www.hs-service.api.crealape.com/api/v1/review/${id}`,{
+                method: "PATCH",
+                credentials: "include",
+                headers: {
+                        "accept": "application/json",
                         "Content-type": "application/json",
                     },
                     body: JSON.stringify({
-                        amount_approved,
-                        comment,
-                        status
-                    }),
-
-                }
-            );
-            const data = await myServicios.json();
-            console.log("PATCH", data)
+                        amount_approved: Number(amount_approved),
+                        comment:comment,
+                        status:"1"
+                    })
+            })
+            
+            
+            const answ = await revisar.json();
+            console.log(answ)
+            
             closeModal();
-
         } catch (error) {
-            console.log(error)
+            console.error(error)
+        } finally {
+            setLoading(false);
+        }
+    
+    }
+    async function desaprobar() {
+        setLoading(true)
+            try {
+                const myServicios = await fetch(`https://www.hs-service.api.crealape.com/api/v1/review/${id}`, {
+                    method: "PATCH",
+                    credentials: "include",
+                    headers: {
+                        "accept": "application/json",
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        amount_approved: Number(amount_approved),
+                        comment,
+                        status: "2",
+                    }),
+                });
+
+                const data = await myServicios.json();
+                console.log("PATCH", data);
+                closeModal();
+                } catch (error) {
+                    console.log(error);
+                } finally {
+                    setLoading(false);
+                }
         }
 
-    }
-
-
     return (
-        <div className="fixed inset-0 z-20 bg-black/50 flex justify-center items-center p-4">
+        <div className="fixed inset-0 z-20 backdrop-blur-2xl flex justify-center items-center p-4">
+            {loading && <Loader/>}
             <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl p-6">
                 <div className='flex justify-between'>
                     <h2 className="text-2xl font-bold mb-2">{servicios?.category?.name} - {servicios?.amount_reported} Horas de servicio</h2>
@@ -100,7 +131,7 @@ const ReviewService = ({ closeModal, servicio }) => {
                         {evidencia ? (
                             <iframe src={evidencia} className="w-full h-[600px]" />
                         ) : (
-                            <div className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-400">
+                            <div className="max-w-sm p-4 border border-gray-200200 rounded shadow animate-pulse md:p-6 dark:border-gray-200400">
                                 <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-400">
                                     <svg
                                         viewBox="0 0 16 20"
@@ -158,7 +189,7 @@ const ReviewService = ({ closeModal, servicio }) => {
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)}
                                     rows={5}
-                                    className="border rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                                    className="border rounded-xl p-3 outline-none focus:ring-2 focus:ring-gray-500 resize-none"
                                     placeholder="Escribe tus comentarios aquí..."
                                 />
 
@@ -188,8 +219,7 @@ const ReviewService = ({ closeModal, servicio }) => {
                     <div className="flex justify-end gap-3 mt-4">
                         <button
                             onClick={() => {
-                                setStatus("Reject")
-                                aprobar()
+                                desaprobar()
                             }}
                             className="px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-gray-400"
                         >
@@ -198,7 +228,6 @@ const ReviewService = ({ closeModal, servicio }) => {
 
                         <button
                             onClick={() => {
-                                setStatus("Approved")
                                 aprobar()
                             }}
                             className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "../comps/Loader";
 /* import { useNavigate } from "react-router-dom"; */
 
 export default function Login() {
@@ -83,10 +84,12 @@ export default function Login() {
   }
 
   return (
-    <div className="h-screen w-full bg-cover bg-center flex items-center justify-center relative bg-[url(/geminis.png)]">
+    <div className="h-screen w-full bg-cover bg-center bg-[url(/geminis.png)]">
+      {loading && <Loader/>}
       <div className="absolute inset-0 bg-[url(/fondo.png)] bg-cover bg-no-repeat"></div>
 
-      <div className="relative  z-10 bg-slate-200 bg-opacity-90 p-8 rounded-xl shadow-lg w-80 md:text-3xl md:p-10 md:w-100">
+      <div className="relative flex items-center justify-center h-screen">
+      <div className="z-10 bg-blue-200 bg-opacity-90 p-8 rounded-xl shadow-lg w-80 md:text-3xl md:p-10 md:w-100">
         <h2 className="text-2xl font-semibold mb-6 text-center ">
           Iniciar Sesión
         </h2>
@@ -120,13 +123,14 @@ export default function Login() {
 
           <button
             type="submit"
-            disabled={loading}
-            className="mt-4 w-full text-xl bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
+            className="mt-4 w-full text-xl bg-blue-700 text-white p-2 rounded-lg hover:bg-blue-800 transition disabled:opacity-50"
           >
-            {loading ? "Cargando..." : "Entrar"}
+            Entrar
           </button>
         </form>
       </div>
+      </div>
+
     </div>
   );
 }

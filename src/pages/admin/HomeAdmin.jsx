@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import Loader from "../../comps/Loader";
 
 const HomeAdmin = () => {
+  const [loading, setLoading] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [open, setOpen] = useState(false);
   const menu = useRef(null);
@@ -38,6 +40,7 @@ const HomeAdmin = () => {
   console.log("M", datos);
 
   async function cerrarSesion() {
+    setLoading(true);
     try {
       const logout = await fetch(
         "https://www.hs-service.api.crealape.com/api/v1/auth/logout",
@@ -56,6 +59,7 @@ const HomeAdmin = () => {
       if (logout) {
         localStorage.clear();
         navigate("/");
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -65,16 +69,17 @@ const HomeAdmin = () => {
   console.log(datos);
 
   return (
-    <div className="flex flex-col w-full min-h-screen ">
-      <header className="text-white w-full h-25 px-[5%] flex justify-between items-center bg-[#1F4E79]">
+    <div className="relative flex flex-col w-full min-h-screen ">
+      {loading && <Loader/>}
+      <header className="text-white w-full h-25 px-[5%] flex justify-between items-center bg-blue-500">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
           <button
             onClick={() => setOpenMenu(!openMenu)}
-            className="flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded"
+            className="flex flex-col gap-1.5 p-2 hover:bg-blue-100 rounded"
           >
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "rotate-45 translate-y-2" : ""
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "rotate-45 tranblue-y-2" : ""
                 }`}
             ></span>
             <span
@@ -82,17 +87,19 @@ const HomeAdmin = () => {
                 }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "-rotate-45 -translate-y-2" : ""
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ${openMenu ? "-rotate-45 -tranblue-y-2" : ""
                 }`}
             ></span>
           </button>
 
           {/* Menú desplegable móvil*/}
           {openMenu && (
-            <div className="absolute text-black left-0 mt-2 w-56 bg-white  rounded-lg shadow-lg z-20">
+            <div className="fixed inset-0 z-10">
+              <div onClick={() => {setOpenMenu(false);}} className="absolute inset-0 backdrop-blur-md h-screen w-screen "/>
+              <div className="absolute bg-blue-500 h-screen w-50 left-0 top-0 shadow-2xl">
               <Link to="/admin">
                 <button
-                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
+                  className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
                   onClick={() => {
                     setOpenMenu(false);
                   }}
@@ -103,7 +110,7 @@ const HomeAdmin = () => {
 
               <Link to="users">
                 <button
-                  className="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors "
+                  className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
                   onClick={() => {
                     setOpenMenu(false);
                   }}
@@ -111,6 +118,7 @@ const HomeAdmin = () => {
                   Usuarios
                 </button>
               </Link>
+              </div>
             </div>
           )}
         </div>
@@ -147,24 +155,27 @@ const HomeAdmin = () => {
           />
 
           {open && (
-            <div className="absolute text-black right-0 mt-2 w-48 bg-white  rounded-lg shadow-lg z-10">
+            <div className="fixed inset-0 z-10">
+              <div onClick={() => {setOpen(false);}} className="absolute inset-0 backdrop-blur-md h-screen w-screen "/>
+              <div className="absolute bg-blue-500 h-screen w-50 right-0 top-0 shadow-2xl">                
               <Link to="edit">
                 <button
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
+                  className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
                   onClick={() => {
                     setOpen(false);
                   }}
                 >
-                  Editar Perfil
+                  Ver Perfil
                 </button>
               </Link>
 
               <button
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors border-t"
+                className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
                 onClick={cerrarSesion}
               >
                 Cerrar Sesión
               </button>
+              </div>
             </div>
           )}
         </nav>
@@ -182,7 +193,7 @@ const HomeAdmin = () => {
         />
       </main>
 
-      <footer className="bg-[#1F4E79] flex justify-around w-full h-40 ">
+      <footer className="bg-blue-500 flex justify-around w-full h-40 ">
         <div className="flex  items-center justify-center pl-5 gap-4  ">
           <a
             href="https://www.youtube.com/channel/UC3mlp-KW6mSDrsfsp8OOlIQ"

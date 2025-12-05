@@ -6,6 +6,7 @@ const UserList = () => {
   const [estado, setEstado] = useState("")
   const [busqueda, setBusqeuda] = useState("")
   const [resultado, setResultado] = useState()
+  const [roles, setRoles] = useState([])
 
   useEffect(() => {
     async function traerServicios() {
@@ -43,11 +44,30 @@ const UserList = () => {
     setResultado(filtrados)
   }, [rol, estado, datos, busqueda])
 
+  useEffect(()=>{
+    async function showRoles() {
+      try {
+        const answ = await fetch("https://www.hs-service.api.crealape.com/api/v1/roles", {
+          method: "GET",
+          credentials: "include"
+        })
+
+        const rol=await answ.json();
+        setRoles(rol)
+        
+      } catch (error) {
+        
+      }
+      
+    }
+    showRoles();
+  },[])
+
   return (
     <div className="w-full  min-h-screen overflow-auto ">
 
       <div className="bg-white rounded-xl shadow-xl overflow-auto ">
-        <div className=" border-b border-gray-200 px-6 py-5 ">
+        <div className=" px-6 py-5 ">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Usuarios</h2>
           <div className="flex flex-row w-full gap-6 ">
             {/* Buscador */}
@@ -56,16 +76,16 @@ const UserList = () => {
                 value={busqueda}
                 onChange={(e) => setBusqeuda(e.target.value)}
                 type="text"
-                placeholder="Escribiendo..."
-                className=" flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Escribe cualquier dato para filtrar..."
+                className=" flex-1 px-4 py-2 bg-gray-100 rounded-lg focus:shadow-xl"
               />
 
             </div>
             {/*FILTROS*/}
             <div className="flex flex-col justify-center items-center ">
-              <h2 className="text-xl font-bold mb-2 ">Filtros</h2>
+              <h2 className="text-xl font-bold ">Filtros</h2>
               <div className="flex gap-15 justify-center items-center my-4">
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center justify-center">
                   <label className="text-md font-bold" htmlFor="">Rol</label>
                   <select
                     value={rol}
@@ -74,12 +94,12 @@ const UserList = () => {
                     }
                     name="" id="">
                     <option value="">Todos</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Controller">Controller</option>
-                    <option value="Student">Estudiante</option>
+                    {roles.map((role)=>(
+                      <option value={role.name}>{role.name}</option>
+                    ))}
                   </select>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center justify-center">
                   <label className="text-md font-bold" htmlFor="">Estado</label>
                   <select
                     value={estado}
@@ -106,20 +126,20 @@ const UserList = () => {
           <table className="w-full max-w-4xl ">
             <thead className="">
 
-              <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+              <tr className="bg-gray-50">
+                <th className="text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Estado
                 </th>
-                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Nombre
                 </th>
-                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Rol
                 </th>
-                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Celular
                 </th>
-                <th className=" md:py-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Email
                 </th>
               </tr>
@@ -128,15 +148,15 @@ const UserList = () => {
               {resultado?.map((item, i) => (
                 <tr
                   key={i}
-                  className="border-b border-gray-100 hover:bg-blue-50 transition-colors"
+                  className="hover:bg-gray-50 transition-colors"
                 >
-                  <td className=" md:py-4 text-gray-600">{item.status}</td>
-                  <td className=" md:py-4 text-gray-600">{item.f_name + " " + item.f_lastname}</td>
-                  <td className=" md:py-4 text-gray-600">{item.role?.name}</td>
-                  <td className="text-lg flex items-center justify-center  md:py-4 text-gray-600">
+                  <td className="text-center md:py-4 text-gray-600">{item.status}</td>
+                  <td className="text-center md:py-4 text-gray-600">{item.f_name + " " + item.f_lastname}</td>
+                  <td className="text-center md:py-4 text-gray-600">{item.role?.name}</td>
+                  <td className="text-center text-lg flex items-center justify-center  md:py-4 text-gray-600">
                     {item.phone ? item.phone : "sin celular"}
                   </td>
-                  <td className=" md:py-4 text-gray-600">{item.email}</td>
+                  <td className="text-center md:py-4 text-gray-600">{item.email}</td>
                 </tr>
               ))}
             </tbody>

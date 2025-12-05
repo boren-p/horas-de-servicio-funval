@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useReducer } from "react";
+import Loader from "../Loader";
 
 const initialState = {
   nombre1: "",
@@ -14,8 +15,6 @@ const initialState = {
   pais: 0,
   controller: 0,
   reclutier: 0,
-  loading: false,
-  error: null,
 };
 
 function reducer(state, action) {
@@ -55,11 +54,15 @@ function reducer(state, action) {
 
 export default function NuevoUsuarioCard() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [loading, setLoading] = useState(false)
+  const [roles, setRoles] = useState([]);
+  const [controller, setController] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
+    setLoading(true)
     formData.append("f_name", state.nombre1);
     formData.append("s_name", state.nombre2);
     formData.append("f_lastname", state.apellido1);
@@ -89,8 +92,9 @@ export default function NuevoUsuarioCard() {
           body: formData,
         }
       );
-
+      
       console.log("Respuesta del servidor", await respuesta.json());
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -98,18 +102,38 @@ export default function NuevoUsuarioCard() {
     dispatch({ type: "RESET" });
   };
 
+  useEffect(()=>{
+    async function showRoles() {
+      try {
+        const answ = await fetch("https://www.hs-service.api.crealape.com/api/v1/roles", {
+          method: "GET",
+          credentials: "include"
+        })
+
+        const rol=await answ.json();
+        setRoles(rol)
+        
+      } catch (error) {
+        
+      }
+      
+    }
+    showRoles();
+  },[])
+
   return (
-    <div className=" flex items-center justify-center">
+    <div className="relative flex items-center justify-center">
+      {loading && <Loader/>}
       <div className="w-full rounded-2xl shadow-xl overflow-hidden ">
         {/* Header con gradiente llamativo */}
-        <div className="bg-[#1F4E79] px-8 py-6 text-center">
-          <h2 className="text-white text-xl md:text-3xl font-bold tracking-wide uppercase">
-            Nuevo Usuario
+        <div className=" bg-white px-8 py-6 text-center">
+          <h2 className="text-xl md:text-3xl font-bold">
+            NUEVO USUARIO
           </h2>
         </div>
 
         {/* Contenido del formulario */}
-        <div className="p-6 md:p-10 bg-white border-[#3E7CB1]">
+        <div className="p-6 md:p-10 bg-white border-blue-500">
           <div className="space-y-6">
             {/* Nombres */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -129,7 +153,7 @@ export default function NuevoUsuarioCard() {
                   id="nombre1"
                   name="nombre1"
                   placeholder="Ingrese primer nombre"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800 focus:outline-none focus:shadow-lg transition-all"
                 />
               </div>
 
@@ -149,7 +173,7 @@ export default function NuevoUsuarioCard() {
                   id="nombre2"
                   name="nombre2"
                   placeholder="Ingrese segundo nombre"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800 focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all"
                 />
               </div>
             </div>
@@ -175,7 +199,7 @@ export default function NuevoUsuarioCard() {
                   id="apellido1"
                   name="apellido1"
                   placeholder="Ingrese primer apellido"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all"
                 />
               </div>
 
@@ -198,7 +222,7 @@ export default function NuevoUsuarioCard() {
                   id="apellido2"
                   name="apellido2"
                   placeholder="Ingrese segundo apellido"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all"
                 />
               </div>
             </div>
@@ -221,7 +245,7 @@ export default function NuevoUsuarioCard() {
                   id="email"
                   name="email"
                   placeholder="ejemplo@correo.com"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all"
                 />
               </div>
 
@@ -241,7 +265,7 @@ export default function NuevoUsuarioCard() {
                   id="number"
                   name="number"
                   placeholder="+21 235320320"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all"
                 />
               </div>
             </div>
@@ -264,7 +288,7 @@ export default function NuevoUsuarioCard() {
                   id="password"
                   name="password"
                   placeholder="Contraseña"
-                  className="px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer"
+                  className="px-4 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all cursor-pointer"
                 ></input>
               </div>
               <div className="flex flex-col space-y-2">
@@ -281,7 +305,7 @@ export default function NuevoUsuarioCard() {
                   }}
                   id="pais"
                   name="pais"
-                  className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                  className="w-full px-3 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all cursor-pointer text-sm"
                 >
                   <option value="">Seleccion el País</option>
                   <option value={4}>Mexico</option>
@@ -303,12 +327,12 @@ export default function NuevoUsuarioCard() {
                     }}
                     id="rol"
                     name="rol"
-                    className="w-full px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                    className="w-full px-3 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:shadow-lg transition-all cursor-pointer text-sm"
                   >
                     <option value="">Seleccion el Rol</option>
-                    <option value={1}>Admin</option>
-                    <option value={2}>Controller</option>
-                    <option value={4}>Estudiante</option>
+                    {roles.map((role)=>(
+                      <option value={role.id}>{role.name}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -328,7 +352,7 @@ export default function NuevoUsuarioCard() {
                       }}
                       id="controlador"
                       name="controlador"
-                      className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                      className="px-3 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all cursor-pointer text-sm"
                     >
                       <option value="">Seleccione controller</option>
                       <option value={2}>Jorge Armando Sosa Nuñez</option>
@@ -430,7 +454,7 @@ export default function NuevoUsuarioCard() {
                         }}
                         id="Escuela"
                         name="Escuela"
-                        className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                        className="px-3 py-3 bg-gray-100 rounded-lg text-gray-800 focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all cursor-pointer text-sm"
                       >
                         <option value="">Seleccione una escuela</option>
                         <option value={1}>Programación</option>
@@ -455,7 +479,7 @@ export default function NuevoUsuarioCard() {
                         }}
                         id="reclutador"
                         name="reclutador"
-                        className="px-3 py-3 border-2 border-gray-300 rounded-lg text-gray-800 bg-white focus:outline-none focus:border-blue-500 focus:shadow-lg transition-all cursor-pointer text-sm"
+                        className="px-3 py-3 bg-gray-100 rounded-lg text-gray-800  focus:outline-none focus:border-gray-200500 focus:shadow-lg transition-all cursor-pointer text-sm"
                       >
                         <option value="">Seleccione reclutador</option>
                         <option value={3}>Edgar Diego Rodriguez</option>
@@ -472,7 +496,7 @@ export default function NuevoUsuarioCard() {
             <button
               onClick={handleSubmit}
               type="submit"
-              className="w-full py-4 bg-[#ffb443] text-white text-lg font-bold uppercase tracking-wide rounded-lg hover:scale-102 transition-all"
+              className="w-full py-4 bg-blue-500 text-white text-lg font-bold uppercase tracking-wide rounded-lg hover:scale-102 transition-all"
             >
               Crear Usuario
             </button>

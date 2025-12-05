@@ -22,11 +22,11 @@ const EditProfile = ({ datos }) => {
   return (
     <div className=" bg-white p-10 rounded-2xl  ">
       <div className="  max-w-3xl mx-auto flex flex-col items-center  justify-center">
-        <div className=" w-full flex justify-between items-center mb-12 pb-6 border-b-2 border-gray-900 pt-5">
+        <div className=" w-full flex justify-between items-center mb-12 pb-6 border-b-2 border-gray-200900 pt-5">
           <h2 className="text-3xl font-bold text-gray-900">MI PERFIL</h2>
           <button
             onClick={() => setEdit(!edit)}
-            className="px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-all font-medium"
+            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-800 transition-all font-medium"
           >
             EDITAR PERFIL
           </button>
@@ -71,7 +71,7 @@ const EditProfile = ({ datos }) => {
             </div>
           ) : (
             <div className="flex flex-col w-100 flex-1 space-y-8">
-              <div className="flex flex-col md:flex-row ">
+              <div className="flex flex-col lg:flex-row ">
                 <div className="w-full  lg:w-80 flex items-baseline justify-center">
                   <img
                     width="100"
@@ -89,7 +89,7 @@ const EditProfile = ({ datos }) => {
                       value={name}
                       placeholder={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                      className="w-full border-b-2 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                     />
                   </div>
                   <div className="pb-2">
@@ -101,7 +101,7 @@ const EditProfile = ({ datos }) => {
                       value={iphone}
                       placeholder={iphone}
                       onChange={(e) => setIphone(e.target.value)}
-                      className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                      className="w-full text-lg border-b-3 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                     />
                   </div>
 
@@ -114,11 +114,11 @@ const EditProfile = ({ datos }) => {
                       value={correo}
                       placeholder={correo}
                       onChange={(e) => setCorreo(e.target.value)}
-                      className="w-full text-lg border-b-3 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                      className="w-full text-lg border-b-3 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                     />
                   </div>
-                  <button className="px-4 py-3 rounded-lg text-white bg-gray-900 lg:bg-white border border-gray-900 lg:text-gray-900 hover:bg-gray-900 hover:text-white transition-all font-medium">
-                    Guardar
+                  <button className="px-4 py-3 rounded-lg text-white bg-blue-500 lg:bg-white border border-gray-200900 lg:text-gray-900 hover:bg-blue-900 hover:text-white transition-all font-medium">
+                    GUARDAR CAMBIOS
                   </button>
                 </div>
               </div>
@@ -131,19 +131,19 @@ const EditProfile = ({ datos }) => {
                   <input
                     type="password"
                     placeholder="Contraseña antigua"
-                    className="w-full px-4 py-3 border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                    className="w-full px-4 py-3 border-b-2 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                   />
                   <input
                     type="password"
                     placeholder="Contraseña nueva"
-                    className="w-full px-4 py-3 border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                    className="w-full px-4 py-3 border-b-2 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                   />
                   <input
                     type="password"
                     placeholder="Confirmar contraseña"
-                    className="w-full px-4 py-3 border-b-2 border-gray-300 focus:outline-none focus:border-gray-900 transition-all placeholder-gray-400"
+                    className="w-full px-4 py-3 border-b-2 border-gray-200300 focus:outline-none focus:border-gray-200900 transition-all placeholder-gray-400"
                   />
-                  <button className="w-full px-4 py-3 text-white rounded-lg border bg-gray-900 lg:bg-white border-gray-900 lg:text-gray-900 lg:hover:bg-gray-900 hover:text-white transition-all font-medium">
+                  <button className="w-full px-4 py-3 text-white rounded-lg border bg-blue-500 lg:bg-white border-gray-200900 lg:text-gray-900 hover:bg-blue-900 hover:text-white transition-all font-medium">
                     CAMBIAR CONTRASEÑA
                   </button>
                 </div>
@@ -154,33 +154,33 @@ const EditProfile = ({ datos }) => {
 
         {/* Información adicional */}
         <div className=" w-full space-y-4">
-          <div className="flex justify-between items-center py-3 border-b border-gray-200">
+          <div className="flex justify-between items-center py-3 border-b border-gray-200200">
             <span className="font-bold text-gray-900 uppercase text-sm">
               Escuela
             </span>
             <span className="text-gray-600">{user.escuela}</span>
           </div>
 
-          <div className="flex justify-between items-center py-3 border-b border-gray-200">
+          <div className="flex justify-between items-center py-3 border-b border-gray-200200">
             <span className="font-bold text-gray-900 uppercase text-sm">
-              Controlador
+              Controller
             </span>
             <span className="text-gray-600">
-              {user.nameContro}/
+              {user.nameContro} - 
               <span className="underline cursor-pointer hover:text-gray-900 transition-colors">
                 {user.numberContro}
               </span>
             </span>
           </div>
 
-          <div className="flex justify-between items-center py-3 border-b border-gray-200">
+          <div className="flex justify-between items-center py-3 border-b border-gray-200200">
             <span className="font-bold text-gray-900 uppercase text-sm">
               Responsable
             </span>
             <span className="text-gray-600">
               {user.nameReclu}
               <span className="underline cursor-pointer hover:text-gray-900 transition-colors">
-                / {user.numberReclu}
+                 - {user.numberReclu}
               </span>
             </span>
           </div>

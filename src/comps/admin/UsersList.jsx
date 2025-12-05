@@ -122,9 +122,9 @@ const UserList = () => {
 
         {/* Tabla */}
 
-        <div className="w-full flex justify-center items-center">
-          <table className="w-full max-w-4xl ">
-            <thead className="">
+        <div className="w-full px-2 flex justify-center items-center">
+          <table className=" w-full">
+            <thead>
 
               <tr className="bg-gray-50">
                 <th className="text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
@@ -139,7 +139,7 @@ const UserList = () => {
                 <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Celular
                 </th>
-                <th className=" md:py-4 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                <th className=" md:px-2 text-center text-sm font-semibold text-gray-700 uppercase tracking-wider">
                   Email
                 </th>
               </tr>
@@ -153,10 +153,10 @@ const UserList = () => {
                   <td className="text-center md:py-4 text-gray-600">{item.status}</td>
                   <td className="text-center md:py-4 text-gray-600">{item.f_name + " " + item.f_lastname}</td>
                   <td className="text-center md:py-4 text-gray-600">{item.role?.name}</td>
-                  <td className="text-center text-lg flex items-center justify-center  md:py-4 text-gray-600">
+                  <td className="text-center text-lg flex items-center justify-center  md:px-4 text-gray-600">
                     {item.phone ? item.phone : "sin celular"}
                   </td>
-                  <td className="text-center md:py-4 text-gray-600">{item.email}</td>
+                  <td className="text-center md:py-2 text-gray-600">{item.email}</td>
                 </tr>
               ))}
             </tbody>

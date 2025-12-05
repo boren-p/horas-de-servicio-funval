@@ -46,13 +46,13 @@ const MyServices = () => {
           <tbody>
             {/* {console.log(servicios?.category)} */}
             {servicios?.map((serv) => (
-              <tr key={serv.id} className="hover:bg-gray-50">
-                <td className="p-3 text-center">{serv.category.name}</td>
-                <td className="p-3 text-center">{serv.amount_reported}</td>
-                <td className="p-3 text-center">{serv.amount_approved ? serv.amount_approved : "0"}</td>
-                <td className="p-3">
+              <tr key={serv.id} className=" hover:bg-gray-50">
+                <td className="px-3 text-center">{serv.category.name}</td>
+                <td className="px-3 text-center">{serv.amount_reported}</td>
+                <td className="px-3 text-center">{serv.amount_approved ? serv.amount_approved : "0"}</td>
+                <td className="px-3 text-center">
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${serv.status === "Approved"
+                    className={`px-3 rounded-full text-center text-sm font-semibold ${serv.status === "Approved"
                       ? "bg-green-100 text-green-700"
                       : serv.status === "Pending"
                         ? "bg-yellow-100 text-yellow-700"

@@ -70,7 +70,7 @@ const HomeAdmin = () => {
 
   return (
     <div className="relative flex flex-col w-full min-h-screen ">
-      {loading && <Loader/>}
+      {loading && <Loader />}
       <header className="text-white w-full h-25 px-[5%] flex justify-between items-center bg-blue-500">
         {/* Menú Hamburguesa - Solo visible en móvil */}
         <div className="lg:hidden relative" ref={hamburguesa}>
@@ -95,29 +95,29 @@ const HomeAdmin = () => {
           {/* Menú desplegable móvil*/}
           {openMenu && (
             <div className="fixed inset-0 z-10">
-              <div onClick={() => {setOpenMenu(false);}} className="absolute inset-0 backdrop-blur-md h-screen w-screen "/>
+              <div onClick={() => { setOpenMenu(false); }} className="absolute inset-0 backdrop-blur-md h-screen w-screen " />
               <div className="absolute bg-blue-500 h-screen w-50 left-0 top-0 shadow-2xl">
-              <Link to="/admin">
-                <button
-                  className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                >
-                  Home
-                </button>
-              </Link>
+                <Link to="/admin">
+                  <button
+                    className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
+                    onClick={() => {
+                      setOpenMenu(false);
+                    }}
+                  >
+                    Home
+                  </button>
+                </Link>
 
-              <Link to="users">
-                <button
-                  className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                >
-                  Usuarios
-                </button>
-              </Link>
+                <Link to="users">
+                  <button
+                    className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
+                    onClick={() => {
+                      setOpenMenu(false);
+                    }}
+                  >
+                    Usuarios
+                  </button>
+                </Link>
               </div>
             </div>
           )}
@@ -156,25 +156,25 @@ const HomeAdmin = () => {
 
           {open && (
             <div className="fixed inset-0 z-10">
-              <div onClick={() => {setOpen(false);}} className="absolute inset-0 backdrop-blur-md h-screen w-screen "/>
-              <div className="absolute bg-blue-500 h-screen w-50 right-0 top-0 shadow-2xl">                
-              <Link to="edit">
-                <button
-                  className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                >
-                  Ver Perfil
-                </button>
-              </Link>
+              <div onClick={() => { setOpen(false); }} className="absolute inset-0 backdrop-blur-md h-screen w-screen " />
+              <div className="absolute bg-blue-500 h-screen w-50 right-0 top-0 shadow-2xl">
+                <Link to="edit">
+                  <button
+                    className="w-full text-left px-4 py-5 my-10 text-white hover:bg-blue-100 hover:text-black transition-colors "
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    Ver Perfil
+                  </button>
+                </Link>
 
-              <button
-                className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
-                onClick={cerrarSesion}
-              >
-                Cerrar Sesión
-              </button>
+                <button
+                  className="w-full text-left px-4 py-5 text-white hover:bg-blue-100 hover:text-black transition-colors "
+                  onClick={cerrarSesion}
+                >
+                  Cerrar Sesión
+                </button>
               </div>
             </div>
           )}
@@ -186,9 +186,7 @@ const HomeAdmin = () => {
       <main className="h-full w-auto px-[5%] py-5 bg-[#f2f3f7] ">
         <Outlet
           context={{
-            nombre: datos.full_name,
-            phone: datos.phone,
-            email: datos.email,
+            datos
           }}
         />
       </main>

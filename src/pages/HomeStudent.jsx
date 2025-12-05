@@ -35,7 +35,7 @@ const HomeStudent = () => {
     traerDatos();
   }, []);
 
-  console.log(datos);
+  console.log("Id?", datos);
 
   async function cerrarSesion() {
     try {
@@ -62,9 +62,9 @@ const HomeStudent = () => {
 
   return (
     <div className=" relative flex flex-col min-h-screen">
-      {loading&& <Loader/>}
+      {loading && <Loader />}
       <div>
-        <Header logout={ cerrarSesion } />
+        <Header logout={cerrarSesion} />
       </div>
       <main className="grow w-full px-[5%] py-5 bg-[#f2f3f7]">
         {editar ? (
@@ -72,9 +72,9 @@ const HomeStudent = () => {
         ) : (
           <div>
             <div className="w-full flex flex-row-reverse">
-            <h1 className="text-3xl font-semibold">
-              Bienvenido: {datos.full_name}
-            </h1>
+              <h1 className="text-3xl font-semibold">
+                Bienvenido: {datos.full_name}
+              </h1>
             </div>
             <ReportService />
             <MyServices />

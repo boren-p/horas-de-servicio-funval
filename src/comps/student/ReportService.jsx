@@ -29,7 +29,7 @@ function reducer(state, action) {
 const ReportService = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false) 
+  const [error, setError] = useState(false)
   const [cath, setCath] = useState([])
 
   const handleSubmit = async (e) => {
@@ -55,24 +55,24 @@ const ReportService = () => {
       const answ = await respuesta.json();
       console.log(answ)
       setLoading(false)
-      
-      if (!respuesta.ok || answ.message === "error") {
-      setError(true);
-    } else {
-      setError(false);
-    }
 
-    setLoading(false);
+      if (!respuesta.ok || answ.message === "error") {
+        setError(true);
+      } else {
+        setError(false);
+      }
+
+      setLoading(false);
     } catch (error) {
       console.log(error);
       setError(true);
       setLoading(false);
-  }
+    }
 
     dispatch({ type: "RESET" });
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     async function showCath() {
       try {
         const answ = await fetch("https://www.hs-service.api.crealape.com/api/v1/categories", {
@@ -80,20 +80,20 @@ const ReportService = () => {
           credentials: "include"
         })
 
-        const cath=await answ.json();
+        const cath = await answ.json();
         setCath(cath)
-        
+
       } catch (error) {
-        
+
       }
-      
+
     }
     showCath();
-  },[])
+  }, [])
 
   return (
     <div className="relative my-5 bg-gray-100 ">
-      {loading && <Loader/>}
+      {loading && <Loader />}
       <form
         onSubmit={handleSubmit}
         className="max-w-full mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4"
@@ -131,9 +131,9 @@ const ReportService = () => {
               }}
             >
               <option value="">Seleccione...</option>
-              {cath.map((ct)=>(
-                      <option value={ct.id}>{ct.name}</option>
-                    ))}
+              {cath.map((ct) => (
+                <option key={ct.id} value={ct.id}>{ct.name}</option>
+              ))}
             </select>
           </div>
 
@@ -167,7 +167,7 @@ const ReportService = () => {
               dispatch({ type: "SET_FILE", payload: e.target.files[0] })
             }
           />
-          
+
         </div>
 
         {error && <div className="w-full flex justify-center">

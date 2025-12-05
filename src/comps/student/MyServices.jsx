@@ -2,26 +2,27 @@ import React, { useState, useEffect } from "react";
 
 const MyServices = () => {
   const [servicios, setServicios] = useState();
-  
+
   async function traerServicios() {
-      try {
-        const myServicios = await fetch(
-          "https://www.hs-service.api.crealape.com/api/v1/services",
-          {
-            method: "GET",
-            credentials: "include", // Necesario para enviar cookie
-          }
-        );
-        const user = await myServicios.json();
-        setServicios(user);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      const myServicios = await fetch(
+        "https://www.hs-service.api.crealape.com/api/v1/services",
+        {
+          method: "GET",
+          credentials: "include", // Necesario para enviar cookie
+        }
+      );
+      const user = await myServicios.json();
+      setServicios(user);
+
+    } catch (error) {
+      console.log(error);
     }
+  }
   useEffect(() => {
     traerServicios();
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     traerServicios();
   }, [servicios])
 
@@ -37,6 +38,7 @@ const MyServices = () => {
             <tr className="bg-gray-100 text-gray-700">
               <th className="p-3 text-center">Nombre del servicio</th>
               <th className="p-3 text-center">Horas reportadas</th>
+              <th className="p-3 text-center">Horas aprobadas</th>
               <th className="p-3 text-center">Estado</th>
               <th className="p-3 text-center">Revisado por</th>
             </tr>
@@ -47,15 +49,15 @@ const MyServices = () => {
               <tr key={serv.id} className="hover:bg-gray-50">
                 <td className="p-3 text-center">{serv.category.name}</td>
                 <td className="p-3 text-center">{serv.amount_reported}</td>
+                <td className="p-3 text-center">{serv.amount_approved ? serv.amount_approved : "0"}</td>
                 <td className="p-3">
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                      serv.status === "Approved"
-                        ? "bg-green-100 text-green-700"
-                        : serv.status === "Pending"
+                    className={`px-3 py-1 rounded-full text-sm font-semibold ${serv.status === "Approved"
+                      ? "bg-green-100 text-green-700"
+                      : serv.status === "Pending"
                         ? "bg-yellow-100 text-yellow-700"
                         : "bg-red-100 text-red-700"
-                    }`}
+                      }`}
                   >
                     {serv.status}
                   </span>
